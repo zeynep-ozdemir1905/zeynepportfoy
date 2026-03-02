@@ -50,7 +50,7 @@ export default function Portfolio() {
                 <Layout size={20} />
                 <span className="text-xs font-black uppercase tracking-widest">Mobile Application</span>
               </div>
-              <h2 className="text-4xl font-serif font-bold text-[#3D3A35]">GoApricot</h2>
+              <h2 className="text-4xl font-serif font-bold text-[#3D3A35]">Pricot</h2>
             </div>
             
             <p className="text-lg text-[#7A746B] leading-relaxed font-light">
