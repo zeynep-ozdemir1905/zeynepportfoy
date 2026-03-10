@@ -37,7 +37,7 @@ Software Development (A.S.): Southern Alberta Institute of Technology (SAIT).
 
 Future Pathway: Transitioning to a B.IT in Software Development in mid-2026.
 
-Long-term Goal: I am working toward a career in Law, aiming to blend my technical foundation in software with legal expertise to solve the challenges of the future tech-legal landscape.
+Long-term Goal: I am working toward a career aiming to blend my technical foundation in software solve the challenges of the future tech landscape.
 
  Technical Toolkit
 Development: JavaScript, TypeScript, React, Next.js, React Native, Node.js, Firebase, Docker.
