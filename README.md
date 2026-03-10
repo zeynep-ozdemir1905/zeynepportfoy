@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Zeynep Ozdemir
+UX/UI Designer • Front-End Developer • Digital Strategist
+Calgary, AB | Class of 2026
 
-## Getting Started
+I am a multi-disciplinary creator currently completing my Software Development studies at SAIT. My professional identity sits at the intersection of three worlds: Human-Centered Design, Full-Stack Development, and Digital Engagement.
 
-First, run the development server:
+I believe that digital tools should be intentional—not just functional. My goal is to build accessible, high-performance solutions that simplify complex human problems, from industrial workforce management to community-building.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🛠 My Expertise
+UX/UI Design & Front-End Development
+I bridge the gap between "how it looks" and "how it works." I specialize in taking high-fidelity Figma prototypes and bringing them to life using React, Next.js, and React Native. My focus is always on:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Accessibility: Ensuring every user can navigate seamlessly (WCAG standards).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Industrial UX: Simplifying complex, real-time data into intuitive dashboards.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Performance: Writing clean, scalable code that powers modern web and mobile apps.
 
-## Learn More
+Social Media & Community Management
+As the Website and Social Media Manager for IDI Calgary, I manage the digital presence of a community-focused organization. This involves:
 
-To learn more about Next.js, take a look at the following resources:
+WordPress Management: Maintaining SEO and site accessibility.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Engagement Strategy: Curating multi-platform content to drive community visibility.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Branding: Maintaining a consistent visual and verbal voice across all digital touchpoints.
 
-## Deploy on Vercel
+ Key Projects
+GoApricot: A workforce management system built to digitize cleaning company operations, featuring live shift timers and automated record-keeping.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Drill Sense Portal: Designing intuitive, dark-mode-optimized interfaces for the industrial oil sector.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Planora Mobile: A React Native productivity application designed for streamlined task organization.
+
+ Academic Journey & Ambition
+Software Development (A.S.): Southern Alberta Institute of Technology (SAIT).
+
+Future Pathway: Transitioning to a B.IT in Software Development in mid-2026.
+
+Long-term Goal: I am working toward a career in Law, aiming to blend my technical foundation in software with legal expertise to solve the challenges of the future tech-legal landscape.
+
+ Technical Toolkit
+Development: JavaScript, TypeScript, React, Next.js, React Native, Node.js, Firebase, Docker.
+
+Design: Figma, Adobe XD, Prototyping, User Research.
+
+Strategy: SEO, WordPress, LinkedIn Branding, Agile/Scrum.
+
+Let's Connect
+LinkedIn: zeynep-ozdemir
+
+GitHub: zeynep-ozdemir1905
+
+Email: barikazeynep2@gmail.com
+
+Would you like me to generate a specific "Skills" section that focuses more on your industrial design experience at Drill Sense for your LinkedIn profile as well?
+
