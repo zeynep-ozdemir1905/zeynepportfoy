@@ -53,5 +53,4 @@ GitHub: zeynep-ozdemir1905
 
 Email: barikazeynep2@gmail.com
 
-Would you like me to generate a specific "Skills" section that focuses more on your industrial design experience at Drill Sense for your LinkedIn profile as well?
 
