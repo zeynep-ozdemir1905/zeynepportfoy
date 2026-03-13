@@ -1,6 +1,7 @@
 Zeynep Ozdemir
 UX/UI Designer • Front-End Developer • Digital Strategist
-Calgary, AB | Class of 2026
+
+https://zeynepportfoy.vercel.app/ 
 
 I am a multi-disciplinary creator currently completing my Software Development studies at SAIT. My professional identity sits at the intersection of three worlds: Human-Centered Design, Full-Stack Development, and Digital Engagement.
 
