@@ -2,200 +2,147 @@
 
 import Link from 'next/link';
 import { 
-  ArrowLeft, 
-  Mail, 
-  Phone, 
-  Linkedin, 
-  Github, 
-  GraduationCap, 
-  Briefcase, 
-  Award, 
-  Star,
-  Sparkles,
-  Heart,
-  ExternalLink
+  ArrowLeft, Mail, Phone, Linkedin, Github, 
+  GraduationCap, Briefcase, Award, Star, 
+  Sparkles, Home, User
 } from "lucide-react";
 
 export default function Resume() {
   return (
-    <div className="min-h-screen bg-[#FDFCF7] text-[#3D3A35] selection:bg-[#F3EFE0] selection:text-[#8B7E66]">
+    <div className="flex min-h-screen bg-[#FDFCF7] text-[#3D3A35] selection:bg-[#F3EFE0]">
       
-      {/* --- NAVIGATION --- */}
-      <nav className="fixed top-0 z-50 w-full bg-[#FDFCF7]/90 backdrop-blur-md border-b border-[#F2EDE4]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between p-5 px-8">
-          <Link href="/" className="group flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#8B7E66] transition-all hover:text-[#3D3A35]">
-            <ArrowLeft size={14} /> Back Home
-          </Link>
-          <div className="flex items-center gap-2">
-            <span className="font-serif italic font-semibold text-[#3D3A35]">Experience</span>
+      {/* --- SIDEBAR NAVIGATION (The Mehdi Style) --- */}
+      <aside className="fixed left-0 top-0 h-screen w-72 bg-[#0F172A] text-white z-50 flex flex-col py-12">
+        {/* Profile Circle */}
+        <div className="mb-10 text-center px-6">
+          <div className="w-32 h-32 rounded-full border-4 border-[#1E293B] overflow-hidden mb-6 mx-auto bg-white">
+            <img 
+              src="https://www.canva.com/facebook-covers/templates/" 
+              alt="Zeynep Ozdemir" 
+              className="w-full h-full object-cover" 
+            />
           </div>
+          <h2 className="text-xl font-serif font-medium tracking-tight">Zeynep Ozdemir</h2>
+          <p className="text-[10px] text-[#BCAC94] font-bold uppercase tracking-widest mt-2">UX Designer & Dev</p>
         </div>
-      </nav>
 
-      <main className="mx-auto max-w-5xl px-6 pt-40 pb-24">
+        {/* Nav Links */}
+        <nav className="flex-1 w-full px-6 space-y-1">
+          {[
+            { id: 'home', label: 'Home', icon: <Home size={18} />, href: "/" },
+            { id: 'about', label: 'About', icon: <User size={18} />, href: "#about" },
+            { id: 'education', label: 'Education', icon: <GraduationCap size={18} />, href: "#education" },
+            { id: 'experience', label: 'Experience', icon: <Briefcase size={18} />, href: "#experience" },
+            { id: 'skills', label: 'Skills', icon: <Star size={18} />, href: "#skills" },
+            { id: 'contact', label: 'Contact', icon: <Mail size={18} />, href: "#contact" },
+          ].map((item) => (
+            <Link
+              key={item.id}
+              href={item.href}
+              className="flex items-center gap-4 py-3 px-4 rounded-xl text-slate-400 hover:text-white hover:bg-[#1E293B] transition-all duration-300"
+            >
+              {item.icon}
+              <span className="text-[11px] font-bold uppercase tracking-widest">{item.label}</span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* Sidebar Social Icons */}
+        <div className="px-10 flex gap-4 mt-auto">
+           <a href="https://github.com/zeynep-ozdemir1905" target="_blank" className="text-slate-400 hover:text-[#BCAC94]"><Github size={20} /></a>
+           <a href="https://www.linkedin.com/in/zeynep-ozdemir-396010335/" target="_blank" className="text-slate-400 hover:text-[#BCAC94]"><Linkedin size={20} /></a>
+        </div>
+      </aside>
+
+      {/* --- MAIN CONTENT (Scrollable area) --- */}
+      <main className="flex-1 ml-72">
         
-        {/* --- HEADER / CONTACT CARD --- */}
-        <section className="relative overflow-hidden rounded-[32px] bg-white p-10 md:p-16 border border-[#F2EDE4] shadow-sm">
-          <div className="absolute top-0 right-0 p-10 text-[#F2EDE4]">
-            <Sparkles size={100} />
-          </div>
+        {/* HERO SECTION WITH BACKGROUND (Like the instructor's screenshot) */}
+        <section id="home" className="relative h-[60vh] flex flex-col justify-center px-12 md:px-24 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070')] bg-cover bg-center">
+          <div className="absolute inset-0 bg-[#0F172A]/70" /> {/* Dark overlay */}
           
-          <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
-            <h1 className="font-serif text-5xl md:text-6xl font-medium text-[#3D3A35]">Zeynep Ozdemir</h1>
-            <p className="mt-4 text-lg font-light tracking-wide text-[#8B7E66] uppercase">
+          <div className="relative z-10">
+            <h1 className="font-serif text-6xl md:text-8xl font-medium text-white">Zeynep Ozdemir</h1>
+            <div className="h-1 w-24 bg-[#BCAC94] my-6" />
+            <p className="text-xl md:text-2xl font-light tracking-[0.2em] text-[#BCAC94] uppercase">
               UX/UI Designer • Front-End Developer
             </p>
-            
-            <div className="mt-10 flex flex-wrap justify-center md:justify-start gap-8 text-[11px] font-bold uppercase tracking-widest text-[#3D3A35]">
-              <a href="mailto:barikazeynep2@gmail.com" className="flex items-center gap-2 border-b border-transparent hover:border-[#3D3A35] transition-all">
-                <Mail size={16} className="text-[#BCAC94]" /> barikazeynep2@gmail.com
-              </a>
-              <span className="flex items-center gap-2">
-                <Phone size={16} className="text-[#BCAC94]" /> (587) 664-6405
-              </span>
-            </div>
-
-            <div className="mt-8 flex gap-4">
-              <a href="https://www.linkedin.com/in/zeynep-ozdemir-396010335/" target="_blank" className="flex items-center gap-2 rounded-full border border-[#F2EDE4] px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-[#8B7E66] hover:bg-[#FDFCF7] transition-all">
-                <Linkedin size={14} /> LinkedIn
-              </a>
-              <a href="https://github.com/zeynep-ozdemir1905" target="_blank" className="flex items-center gap-2 rounded-full border border-[#F2EDE4] px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-[#8B7E66] hover:bg-[#FDFCF7] transition-all">
-                <Github size={14} /> GitHub
-              </a>
-            </div>
           </div>
         </section>
 
-        <div className="mt-16 grid gap-16 lg:grid-cols-[1fr_320px]">
-          
-          {/* --- LEFT COLUMN: EXPERIENCE --- */}
-          <div className="space-y-16">
-            <section>
-              <div className="flex items-center gap-4 mb-12">
-                <div className="h-px w-8 bg-[#BCAC94]"></div>
-                <h2 className="text-xs font-black uppercase tracking-[0.4em] text-[#BCAC94]">Experience</h2>
-              </div>
+        {/* EXPERIENCE SECTION */}
+        <section id="experience" className="py-24 px-12 md:px-24 bg-white">
+          <div className="flex items-center gap-4 mb-16">
+            <h2 className="text-3xl font-serif font-bold text-[#3D3A35]">Experience</h2>
+            <div className="h-px flex-1 bg-[#F2EDE4]" />
+          </div>
 
-              <div className="space-y-12 border-l border-[#F2EDE4] ml-2 pl-10">
-                {/* Drill Sense */}
-                <div className="relative">
-                  <div className="absolute -left-[45px] top-1.5 h-2 w-2 rounded-full bg-[#3D3A35]" />
-                  <div className="flex justify-between items-start flex-wrap gap-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-[#3D3A35]">UX/UI Designer & Developer</h3>
-                      <p className="font-serif italic text-[#8B7E66]">Drill Sense — Calgary, AB</p>
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#BCAC94] bg-[#FAF9F6] px-3 py-1 rounded-md">Dec 2025 – Present</span>
-                  </div>
-                  <ul className="mt-6 space-y-4 text-sm text-[#7A746B] font-light leading-relaxed">
-                    <li className="flex gap-3">
-                      <span className="text-[#BCAC94]">•</span>
-                      Architecting high-performance dashboards for real-time industrial data visualization.
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="text-[#BCAC94]">•</span>
-                      Leading the transition to Next.js to improve software responsiveness and SEO.
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="text-[#BCAC94]">•</span>
-                      Auditing and implementing WCAG accessibility standards across the enterprise portal.
-                    </li>
+          <div className="space-y-16">
+            {/* Drill Sense */}
+            <div className="grid md:grid-cols-[200px_1fr] gap-8">
+               <span className="text-[11px] font-bold uppercase tracking-widest text-[#BCAC94]">Dec 2025 – Present</span>
+               <div>
+                  <h3 className="text-2xl font-bold text-[#3D3A35]">UX/UI Designer & Developer</h3>
+                  <p className="font-serif italic text-[#8B7E66] text-lg mb-4">Drill Sense — Calgary, AB</p>
+                  <ul className="space-y-3 text-[#7A746B] font-light leading-relaxed">
+                    <li>• Architecting dashboards for real-time industrial data visualization.</li>
+                    <li>• Leading Next.js transitions to improve software responsiveness.</li>
+                    <li>• Implementing WCAG accessibility standards for enterprise portals.</li>
                   </ul>
-                </div>
+               </div>
+            </div>
 
-                {/* IDI Calgary */}
-                <div className="relative">
-                  <div className="absolute -left-[45px] top-1.5 h-2 w-2 rounded-full bg-[#D9D1C1]" />
-                  <div className="flex justify-between items-start flex-wrap gap-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-[#3D3A35]">Website & Engagement Manager</h3>
-                      <p className="font-serif italic text-[#8B7E66]">IDI Calgary (Volunteer)</p>
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#BCAC94]">Jun 2025 – Present</span>
-                  </div>
-                  <p className="mt-4 text-sm text-[#7A746B] font-light leading-relaxed">
-                    Modernizing the digital presence through WordPress optimization and community-focused 
-                    social strategy, resulting in increased engagement and visibility.
+            {/* IDI Calgary */}
+            <div className="grid md:grid-cols-[200px_1fr] gap-8">
+               <span className="text-[11px] font-bold uppercase tracking-widest text-[#BCAC94]">Jun 2025 – Present</span>
+               <div>
+                  <h3 className="text-2xl font-bold text-[#3D3A35]">Website & Engagement Manager</h3>
+                  <p className="font-serif italic text-[#8B7E66] text-lg mb-4">IDI Calgary (Volunteer)</p>
+                  <p className="text-[#7A746B] font-light leading-relaxed">
+                    Modernizing digital presence through WordPress optimization and community-focused strategy.
                   </p>
-                </div>
-
-                {/* Sky Air Supply */}
-                <div className="relative">
-                  <div className="absolute -left-[45px] top-1.5 h-2 w-2 rounded-full bg-[#D9D1C1]" />
-                  <div className="flex justify-between items-start flex-wrap gap-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-[#3D3A35]">Web Editor & Designer</h3>
-                      <p className="font-serif italic text-[#8B7E66]">Sky Air Supply LTD. (Co-op)</p>
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#BCAC94]">June – Aug 2025</span>
-                  </div>
-                  <p className="mt-4 text-sm text-[#7A746B] font-light leading-relaxed">
-                    Developed high-fidelity prototypes in Figma for internal corporate tools and managed 
-                    technical documentation for the engineering department.
+               </div>
+            </div>
+          </div>
+         {/* IDI Calgary */}
+            <div className="grid md:grid-cols-[200px_1fr] gap-8">
+               <span className="text-[11px] font-bold uppercase tracking-widest text-[#BCAC94]">Jun 2025 – Aug 2025</span>
+               <div>
+                  <h3 className="text-2xl font-bold text-[#3D3A35]">User Interface Designer</h3>
+                  <p className="font-serif italic text-[#8B7E66] text-lg mb-4">Sky Air Supplies CO-OP </p>
+                  <p className="text-[#7A746B] font-light leading-relaxed">
+                    Designer high fidelity user interfaces and brought them to life.
                   </p>
-                </div>
+               </div>
+            </div>
+        </section>
+
+
+        {/* SKILLS SECTION (Technical Toolkit) */}
+        <section id="skills" className="py-24 px-12 md:px-24 bg-[#FAF9F6]">
+          <h2 className="text-3xl font-serif font-bold text-[#3D3A35] mb-12">Technical Toolkit</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {["Figma", "Next.js", "React Native", "Tailwind", "JavaScript", "SEO", "WordPress", "Node.js"].map((skill) => (
+              <div key={skill} className="bg-white border border-[#F2EDE4] p-6 rounded-2xl shadow-sm text-center">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#3D3A35]">{skill}</span>
               </div>
-            </section>
+            ))}
           </div>
+        </section>
 
-          {/* --- RIGHT COLUMN: SKILLS & EDU --- */}
-          <div className="space-y-16">
-            {/* SKILLS */}
-            <section className="space-y-8">
-              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#BCAC94] flex items-center gap-2">
-                <Star size={14} /> Technical Toolkit
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {["Figma", "Next.js", "React Native", "Tailwind", "JavaScript", "SEO", "WordPress", "Node.js"].map((skill) => (
-                  <span key={skill} className="rounded-full border border-[#F2EDE4] bg-white px-4 py-2 text-[10px] font-bold text-[#3D3A35]">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </section>
-
-            {/* EDUCATION */}
-            <section className="space-y-8">
-              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#BCAC94] flex items-center gap-2">
-                <GraduationCap size={14} /> Academic
-              </h2>
-              <div className="border-l border-[#F2EDE4] pl-6 space-y-2">
-                <p className="font-bold text-[#3D3A35] text-sm">SAIT</p>
-                <p className="text-xs italic font-serif text-[#8B7E66]">B.IT Software Development</p>
-                <p className="text-[9px] font-bold text-[#BCAC94] uppercase tracking-tighter">Class of 2028</p>
-              </div>
-            </section>
-
-            {/* CERTIFICATIONS */}
-            <section className="space-y-8">
-              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#BCAC94] flex items-center gap-2">
-                <Award size={14} /> Certifications
-              </h2>
-              <ul className="space-y-4 text-[10px] font-bold uppercase tracking-widest text-[#8B7E66]">
-                <li className="flex items-center gap-3">
-                  <div className="h-1 w-1 rounded-full bg-[#BCAC94]" /> 
-                  Reconciliation Certificate
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="h-1 w-1 rounded-full bg-[#BCAC94]" /> 
-                  Childcare Level 1
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="h-1 w-1 rounded-full bg-[#BCAC94]" /> 
-                  CPR & First Aid
-                </li>
-              </ul>
-            </section>
+        {/* CONTACT FOOTER */}
+        <footer id="contact" className="py-20 px-12 md:px-24 bg-white border-t border-[#F2EDE4]">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#BCAC94]">
+              Zeynep Ozdemir • Calgary, AB 
+            </p>
+            <div className="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-[#3D3A35]">
+              <a href="mailto:barikazeynep2@gmail.com" className="hover:text-[#BCAC94] transition-colors">Email</a>
+              <span className="">(587) 664-6405</span>
+            </div>
           </div>
-        </div>
+        </footer>
       </main>
-
-      {/* --- FOOTER --- */}
-      <footer className="py-20 text-center border-t border-[#F2EDE4] bg-white">
-        <p className="text-[9px] font-black uppercase tracking-[0.6em] text-[#BCAC94]">
-          Zeynep Ozdemir • Calgary, AB 
-        </p>
-      </footer>
     </div>
   );
 }

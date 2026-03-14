@@ -10,121 +10,109 @@ import {
   Mail,
   ArrowRight,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  Code2,
+  Layers,
+  Globe
 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#FDFCF7] text-[#3D3A35] selection:bg-[#F3EFE0] selection:text-[#8B7E66]">
+    <div className="min-h-screen bg-white text-[#050B18] selection:bg-[#3498db] selection:text-white">
       
-      {/* --- ELEGANT NAV --- */}
-      <nav className="fixed top-0 z-50 w-full bg-[#FDFCF7]/90 backdrop-blur-md border-b border-[#F2EDE4]">
-        <div className="mx-auto flex max-w-6xl items-center justify-between p-6 px-10">
-          <span className="text-xl font-serif font-semibold tracking-tight text-[#3D3A35]">Zeynep.</span>
-          <div className="flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8B7E66]">
-            <Link href="/portfolio" className="hover:text-[#3D3A35] transition-colors">Portfolio</Link>
-            <Link href="/about" className="hover:text-[#3D3A35] transition-colors">Resume</Link>
-            <Link href="mailto:barikazeynep2@gmail.com" className="rounded-full border border-[#D9D1C1] px-6 py-2 hover:bg-[#D9D1C1] hover:text-white transition-all">
-              Contact
+      {/* --- MODERN NAV --- */}
+      <nav className="fixed top-0 z-50 w-full bg-[#050B18]/95 backdrop-blur-md border-b border-white/10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between p-5 px-8">
+          <span className="text-xl font-bold tracking-tighter text-white uppercase">Zeynep<span className="text-[#3498db]">.</span></span>
+          <div className="flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-300">
+            <Link href="/portfolio" className="hover:text-[#3498db] transition-colors">Portfolio</Link>
+            <Link href="/about" className="hover:text-[#3498db] transition-colors">Resume</Link>
+            <Link href="mailto:barikazeynep2@gmail.com" className="bg-[#3498db] text-white px-5 py-2 rounded-md hover:bg-blue-600 transition-all">
+              Hire Me
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* --- HERO SECTION --- */}
-      <header className="relative flex min-h-screen flex-col items-center justify-center px-6">
-        {/* Soft Warm Glow */}
-        <div className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F5E6D3] opacity-40 blur-[120px]" />
+      {/* --- HERO SECTION (High Impact) --- */}
+      <header className="relative flex min-h-[85vh] flex-col items-center justify-center px-6 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174')] bg-cover bg-center">
+        {/* Dark Overlay to match reference photo */}
+        <div className="absolute inset-0 bg-[#050B18]/85" />
         
-        <div className="flex flex-col items-center space-y-8 text-center">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.4em] text-[#BCAC94]">
-            <Sparkles size={12} /> Digital Experience Designer
+        <div className="relative z-10 flex flex-col items-center space-y-6 text-center">
+          <div className="px-4 py-1 border border-[#3498db]/30 rounded-full bg-[#3498db]/10 text-[10px] font-bold uppercase tracking-[0.3em] text-[#3498db]">
+            Front End Developer & UI Designer
           </div>
           
-          <h1 className="max-w-5xl font-serif text-6xl font-medium leading-[1.1] tracking-tight sm:text-8xl text-[#3D3A35]">
-            Refined design for <br />
-            <i className="italic font-serif text-[#BCAC94]">modern</i> interfaces.
+          <h1 className="max-w-4xl text-5xl font-extrabold leading-[1.1] tracking-tighter sm:text-8xl text-white">
+            Building Digital <br />
+            <span className="text-[#3498db]">Experiences</span> That Matter.
           </h1>
           
-          <p className="mx-auto max-w-xl text-lg font-medium text-[#7A746B] leading-relaxed">
-            I’m a UX/UI designer and developer blending soft, intentional 
-            aesthetics with functional, clean code. Currently building 
-            accessible solutions in Calgary.
+          <p className="mx-auto max-w-2xl text-lg text-slate-300 leading-relaxed font-light">
+            Specializing in React Native, Next.js, and Cloud Infrastructure. 
+            Transforming complex requirements into seamless, high-performance interfaces.
           </p>
 
-          <div className="pt-8">
-            <Link href="/portfolio" className="group flex items-center gap-3 rounded-full bg-[#3D3A35] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-[#8B7E66] shadow-xl shadow-[#3D3A35]/10">
-              Explore Portfolio <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          <div className="pt-6 flex gap-4">
+            <Link href="/portfolio" className="group flex items-center gap-3 rounded-md bg-[#3498db] px-8 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-blue-600 shadow-xl shadow-blue-500/20">
+              View Work <ArrowRight size={16} />
+            </Link>
+            <Link href="/about" className="group flex items-center gap-3 rounded-md border border-[#3498db] px-8 py-4 text-sm font-bold uppercase tracking-widest text-[#3498db] transition-all hover:bg-[#3498db]/10">
+              Learn More <ChevronRight size={16} />
             </Link>
           </div>
-        </div>
+         </div>
       </header>
 
-      {/* --- CAPABILITIES SECTION --- */}
-      <section className="py-32 px-10 bg-[#FAF9F6] border-y border-[#F2EDE4]">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-16 lg:grid-cols-3">
-            <div className="space-y-6 group">
-              <div className="p-3 w-fit rounded-2xl bg-white border border-[#F2EDE4] text-[#BCAC94] transition-colors group-hover:bg-[#BCAC94] group-hover:text-white">
-                <Palette size={24} />
-              </div>
-              <h3 className="text-sm font-black uppercase tracking-widest">Interface Design</h3>
-              <p className="text-sm leading-relaxed text-[#7A746B]">Creating visual harmony through balanced layouts, soft palettes, and user-centric Figma prototypes.</p>
-            </div>
-            
-            <div className="space-y-6 group">
-              <div className="p-3 w-fit rounded-2xl bg-white border border-[#F2EDE4] text-[#BCAC94] transition-colors group-hover:bg-[#BCAC94] group-hover:text-white">
-                <Flower2 size={24} />
-              </div>
-              <h3 className="text-sm font-black uppercase tracking-widest">Clean Development</h3>
-              <p className="text-sm leading-relaxed text-[#7A746B]">Building responsive, interactive spaces using React and Next.js, with a focus on code quality.</p>
-            </div>
+      {/* --- SKILLS/CAPABILITIES (Grid Layout) --- */}
+      <section className="py-24 px-10 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-[#050B18]">Core Expertise</h2>
+            <div className="w-12 h-1 bg-[#3498db] mx-auto mt-4" />
+          </div>
 
-            <div className="space-y-6 group">
-              <div className="p-3 w-fit rounded-2xl bg-white border border-[#F2EDE4] text-[#BCAC94] transition-colors group-hover:bg-[#BCAC94] group-hover:text-white">
-                <Cloud size={24} />
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              { 
+                title: "UI/UX Architecture", 
+                desc: "Focusing on WCAG accessibility and user-centered design systems in Figma.",
+                icon: <Layers size={28} /> 
+              },
+              { 
+                title: "Front End Development", 
+                desc: "Developing robust applications with React Native, Expo and Next.js.",
+                icon: <Code2 size={28} /> 
+              },
+              { 
+                title: "Web Management & Design", 
+                desc: "Scaling interfaces via Azure and Docker for industrial-grade performance.",
+                icon: <Globe size={28} /> 
+              }
+            ].map((skill, i) => (
+              <div key={i} className="p-10 rounded-xl border border-slate-100 bg-slate-50/50 hover:border-[#3498db]/30 transition-all group">
+                <div className="mb-6 text-[#3498db] group-hover:scale-110 transition-transform">{skill.icon}</div>
+                <h3 className="text-lg font-bold mb-3 text-[#050B18]">{skill.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{skill.desc}</p>
               </div>
-              <h3 className="text-sm font-black uppercase tracking-widest">Digital Strategy</h3>
-              <p className="text-sm leading-relaxed text-[#7A746B]">Optimizing presence through SEO, web management, and ensuring every space is accessible to all.</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- IMAGE GALLERY (REFINED) --- */}
-      <section className="py-32 px-10">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 md:grid-cols-2">
-            <div className="relative group overflow-hidden rounded-3xl">
-              <img 
-                src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=2000&auto=format&fit=crop" 
-                alt="Aesthetic 1"
-                className="aspect-[16/11] w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#3D3A35]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <div className="relative group overflow-hidden rounded-3xl">
-              <img 
-                src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?q=80&w=2070&auto=format&fit=crop" 
-                alt="Aesthetic 2"
-                className="aspect-[16/11] w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#3D3A35]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+      {/* --- FOOTER (Matches Dark Sidebar Theme) --- */}
+      <footer className="py-20 bg-[#050B18] text-center border-t border-white/5">
+        <div className="mx-auto max-w-lg space-y-8 px-6">
+          <h2 className="text-2xl font-bold text-white uppercase tracking-tighter">Zeynep Ozdemir</h2>
+          <div className="flex justify-center gap-8 text-slate-400">
+            <a href="#" className="hover:text-[#3498db] transition-colors"><Github size={22} /></a>
+            <a href="#" className="hover:text-[#3498db] transition-colors"><Linkedin size={22} /></a>
+            <a href="#" className="hover:text-[#3498db] transition-colors"><Mail size={22} /></a>
           </div>
-        </div>
-      </section>
-
-      {/* --- FOOTER --- */}
-      <footer className="py-24 bg-white text-center border-t border-[#F2EDE4]">
-        <div className="mx-auto max-w-lg space-y-10 px-6">
-          <p className="font-serif italic text-2xl text-[#3D3A35]">Intentional design, <br />built with care.</p>
-          <div className="flex justify-center gap-10 text-[#BCAC94]">
-            <a href="https://github.com/zeynep-ozdemir1905" className="hover:text-[#3D3A35] transition-colors"><Github size={24} /></a>
-            <a href="https://www.linkedin.com/in/zeynep-ozdemir-396010335/" className="hover:text-[#3D3A35] transition-colors"><Linkedin size={24} /></a>
-            <a href="mailto:barikazeynep2@gmail.com" className="hover:text-[#3D3A35] transition-colors"><Mail size={24} /></a>
+          <div className="pt-8 border-t border-white/5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-slate-500">© 2026 • CALGARY, ALBERTA</p>
           </div>
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#BCAC94]">© 2026 ZEYNEP OZDEMIR • CALGARY</p>
         </div>
       </footer>
     </div>
