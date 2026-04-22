@@ -70,6 +70,8 @@ const EDUCATION = [
   },
 ];
 
+
+
 const SKILL_GROUPS: SkillGroup[] = [
   { group: "Design",   items: ["Figma", "Prototyping", "UX Research", "WCAG 2.1", "Motion Design"] },
   { group: "Frontend", items: ["React", "Next.js", "React Native", "Tailwind CSS", "TypeScript"] },
@@ -83,7 +85,7 @@ const PROJECTS: Project[] = [
     title: "Go Apricot",
     category: "Mobile Application",
     icon: Smartphone,
-    tags: ["React Native", "Azure", "UI Design"],
+    tags: ["React Expo", "Azure", "UI Design"],
     desc: "A workforce management system designed to bridge the gap between complex industrial data and user interaction. Created for a cleaning company at SAIT to streamline employee check-ins and daily operations.",
     figma: "https://embed.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee?node-id=0-1&embed-host=share",
     accent: "#C084A0",
@@ -94,12 +96,26 @@ const PROJECTS: Project[] = [
     title: "Drill Sense",
     category: "Web Application",
     icon: Monitor,
-    tags: ["WCAG 2.1", "Next.js", "Dashboard"],
+    tags: ["React",  "Figma",  "Data Visualization", "Prototyping"],
     desc: "An enterprise transformation focusing on strict WCAG accessibility. This dashboard provides real-time industrial data visualization with a clean, high-end aesthetic for oilfield operators.",
     figma: "https://embed.figma.com/design/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&embed-host=share",
     accent: "#A78BCA",
   },
+  {
+    id: "Calgary Gift Card App",
+    number: "03",
+    title: "Calgary Gift Card App",
+    category: "Mobile Application",
+    icon: Smartphone,
+    tags: ["UI Design", "Figma", "Prototyping"],
+    desc: "An enterprise transformation focusing on strict WCAG accessibility. This dashboard provides real-time industrial data visualization with a clean, high-end aesthetic for oilfield operators.",
+    figma: "https://embed.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep?node-id=0-1&amp;embed-host=share",
+    accent: "#A78BCA",
+  },
+
 ];
+
+
 
 /* ─── HOOKS ──────────────────────────────────────────────────── */
 function useInView(threshold = 0.12): [React.RefObject<HTMLElement | null>, boolean] {
@@ -541,7 +557,7 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-3 gap-5">
               {SKILL_GROUPS.map((g, i) => (
                 <Fade key={g.group} delay={i * 0.12}>
-                  <div className="bg-gray-400 rounded-2xl p-6 border border-rose-50 hover:border-rose-100 hover:shadow-sm transition-all duration-300 h-full">
+                  <div className="bg-white rounded-2xl p-6 border border-rose-200 hover:border-rose-100 hover:shadow-sm transition-all duration-300 h-full">
                     <p className="text-[10px] font-black tracking-[0.25em] uppercase text-rose-300 mb-4">{g.group}</p>
                     <div className="flex flex-wrap gap-2">
                       {g.items.map((item) => (
