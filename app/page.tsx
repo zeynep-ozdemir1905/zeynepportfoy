@@ -30,12 +30,12 @@ const EXPERIENCE = [
   {
     date: "Dec 2025 – Present",
     role: "UX/UI Designer & Developer",
-    company: "Drill Sense",
+    company: "MLC",
     location: "Calgary, AB",
     bullets: [
-      "Architecting dashboards for real-time industrial data visualization.",
-      "Leading Next.js transitions to improve software responsiveness.",
-      "Implementing WCAG accessibility standards for enterprise portals.",
+      "Creating Figma designs for enterprise applications.",
+      "Leading transitions to improve software responsiveness.",
+      "Implemeenting front end for enterprise applications.",
     ],
   },
   {
@@ -62,8 +62,15 @@ const EXPERIENCE = [
 
 const EDUCATION = [
   {
-    date: "2023 – 2026",
+    date: "2024 – 2026",
     degree: "Diploma — Information Technology: Software Development",
+    school: "SAIT (Southern Alberta Institute of Technology)",
+    location: "Calgary, AB",
+    note: "Focus on UX/UI Design, React, and Accessible Web Development",
+  },
+  {
+    date: "2024 – 2028",
+    degree: "Bachelors — Information Technology: Software Development",
     school: "SAIT (Southern Alberta Institute of Technology)",
     location: "Calgary, AB",
     note: "Focus on UX/UI Design, React, and Accessible Web Development",
@@ -73,8 +80,8 @@ const EDUCATION = [
 
 
 const SKILL_GROUPS: SkillGroup[] = [
-  { group: "Design",   items: ["Figma", "Prototyping", "UX Research", "WCAG 2.1", "Motion Design"] },
-  { group: "Frontend", items: ["React", "Next.js", "React Native", "Tailwind CSS", "TypeScript"] },
+  { group: "Design",   items: ["Figma", "Prototyping", "UX Research", "Adobe Photoshop", "Motion Design"] },
+  { group: "Frontend", items: ["React", "Next.js", "React Native & Expo", "Tailwind CSS", "TypeScript", "HTML"] },
   { group: "Tools",    items: ["Azure", "Node.js", "WordPress", "Git",] },
 ];
 
@@ -91,9 +98,9 @@ const PROJECTS: Project[] = [
     accent: "#C084A0",
   },
   {
-    id: "drill-sense",
+    id: "MLC",
     number: "02",
-    title: "Drill Sense",
+    title: "MLC",
     category: "Web Application",
     icon: Monitor,
     tags: ["React",  "Figma",  "Data Visualization", "Prototyping"],
@@ -203,7 +210,7 @@ const ProjectCard: FC<{ p: Project; flip: boolean }> = ({ p, flip }) => {
       <div className={`flex flex-col justify-center p-8 lg:p-12 bg-white ${flip ? "lg:order-2" : ""}`}>
         <div className="flex items-center gap-2 mb-4">
           <span className="text-[10px] font-black tracking-[0.25em] uppercase text-rose-300">{p.number}</span>
-          <div className="w-5 h-px bg-rose-200" />
+          <div className="w-5 h-px bg-blue-200" />
           <Icon size={13} style={{ color: p.accent }} />
           <span className="text-[10px] font-black tracking-[0.2em] uppercase" style={{ color: p.accent }}>
             {p.category}
@@ -501,7 +508,7 @@ export default function Portfolio() {
                         <div className="timeline-dot" />
                         <div>
                           <h3 className="text-lg font-bold text-stone-800">{exp.role}</h3>
-                          <p className="text-sm text-rose-400 font-semibold italic"
+                          <p className="text-sm text-rose-400"
                             style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                             {exp.company} · {exp.location}
                           </p>
