@@ -112,6 +112,30 @@ const PROJECTS: Project[] = [
     figma: "https://embed.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep?node-id=0-1&amp;embed-host=share",
     accent: "#A78BCA",
   },
+ {
+    id: "Apply Alberta",
+    number: "04",
+    title: "Apply Alberta",
+    category: "Web Application",
+    icon: Monitor,
+    tags: ["UI Design", "Lead Designer", "Design", "Front end Development"],
+    desc: "APAS focuses on Alberta high school grads and international students, and provides them with a comprehensive platform for academic and career guidance.",
+    figma: "https://campus-navigator-seven.vercel.app/",
+    accent: "#A78BCA",
+  },
+
+  {
+    id: "Voluntr",
+    number: "05",
+    title: "Voluntr",
+    category: "Web Application",
+    icon: Monitor,
+    tags: ["UI Design", "Lead Designer", "Design", "Front end Development"],
+    desc: "Voluntr focuses on Volunteering, via Volunteer you can apply to volunteer opportunities in your area and track your applications and hours. Be ready to serve your community!",
+    figma: "https://cprg306-project-volunteeringplatform.vercel.app/",
+    accent: "#A78BCA",
+  },
+
 
 ];
 
