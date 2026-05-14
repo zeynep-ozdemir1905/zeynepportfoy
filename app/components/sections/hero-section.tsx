@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, GraduationCap, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { MagneticButton } from "@/app/components/ui/magnetic-button";
-import { rotatingTitles } from "@/app/data/portfolio";
+import { PROFILE, rotatingTitles, socials } from "@/app/data/portfolio";
 import { useEffect, useState } from "react";
+
+const iconMap = { GitHub: Github, LinkedIn: Linkedin, Email: Mail } as const;
 
 export function HeroSection() {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -16,81 +18,219 @@ export function HeroSection() {
     return () => window.clearInterval(interval);
   }, []);
 
+  const webSocials = socials.filter((s) => s.label !== "Email");
+
   return (
-    <section id="resume" className="relative flex min-h-screen items-center px-6 pt-28">
-      <div className="mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="mb-6 inline-flex rounded-full border border-rose-200 bg-white/70 px-4 py-1 text-xs uppercase tracking-[0.3em] text-rose-500"
-          >
-            Elegant Developer Portfolio
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl font-semibold leading-tight text-stone-800 md:text-7xl"
-          >
-            Zeynep Ozdemir
-          </motion.h1>
+    <section
+      id="intro"
+      className="relative flex min-h-screen scroll-mt-28 items-center overflow-hidden px-6 pb-16 pt-32 md:pt-36"
+    >
+      <div className="pointer-events-none absolute inset-0">
+        <motion.div
+          animate={{ rotate: [0, 6, 0], scale: [1, 1.03, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -right-32 -top-32 h-[min(700px,90vw)] w-[min(700px,90vw)] rounded-[50%_0_50%_0] opacity-[0.12]"
+          style={{ background: "linear-gradient(135deg, #FBDCE8, #E8B4C0)" }}
+        />
+        <motion.div
+          animate={{ rotate: [0, -5, 0], scale: [1, 1.04, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-16 -left-16 h-72 w-72 rounded-[50%_0_50%_0] opacity-[0.1]"
+          style={{ background: "linear-gradient(135deg, #F5C6D8, #A78BCA)" }}
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
+        <div className="grid items-center gap-14 lg:grid-cols-[1fr_380px]">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65 }}
+              className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2"
+              style={{
+                background: "rgba(253,240,245,0.9)",
+                borderColor: "rgba(232,180,192,0.45)",
+              }}
+            >
+              <motion.span
+                animate={{ scale: [1, 1.35, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="h-2 w-2 rounded-full bg-emerald-400"
+              />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-rose-500">
+                Open to opportunities · {PROFILE.city}
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.05 }}
+              className="font-display text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-[0.92] tracking-tight text-stone-800"
+            >
+              Zeynep
+              <br />
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #E8B4C0 0%, #C084A0 45%, #A78BCA 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Ozdemir
+              </span>
+            </motion.h1>
+
+            <motion.div
+              key={titleIndex}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-5 text-lg font-light text-stone-500 md:text-2xl"
+            >
+              {rotatingTitles[titleIndex]}
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.15 }}
+              className="mt-8 max-w-xl text-base font-light leading-relaxed text-stone-600"
+            >
+              I design warm, accessible interfaces with a soft-luxury feel—pairing UI craft with frontend engineering so
+              products feel polished and human.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.22 }}
+              className="mt-10 flex flex-wrap gap-3"
+            >
+              <MagneticButton
+                href="#projects"
+                className="border-transparent bg-gradient-to-r from-[#E8B4C0] to-[#C084A0] text-white shadow-[0_12px_40px_rgba(192,132,160,0.3)] hover:from-[#f0c4ce] hover:to-[#c994a8]"
+              >
+                View projects <ArrowUpRight className="ml-2 h-4 w-4" />
+              </MagneticButton>
+              <MagneticButton
+                href="#contact"
+                className="border-stone-200 bg-white/90 text-stone-700 hover:border-rose-200 hover:text-stone-900"
+              >
+                Book a coffee chat
+              </MagneticButton>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.28 }}
+              className="mt-10 flex flex-wrap items-center gap-5"
+            >
+              {webSocials.map(({ label, href }) => {
+                const Icon = iconMap[label as keyof typeof iconMap];
+                if (!Icon) return null;
+                return (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor-big
+                    whileHover={{ y: -2, color: "#C084A0" }}
+                    className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-stone-500"
+                  >
+                    <Icon size={15} /> {label}
+                  </motion.a>
+                );
+              })}
+              <motion.a
+                href={PROFILE.emailHref}
+                data-cursor-big
+                whileHover={{ y: -2, color: "#C084A0" }}
+                className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-stone-500"
+              >
+                <Mail size={15} /> Email
+              </motion.a>
+            </motion.div>
+          </div>
+
           <motion.div
-            key={titleIndex}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-5 text-lg text-stone-600 md:text-2xl"
+            initial={{ opacity: 0, x: 40, rotate: 2 }}
+            animate={{ opacity: 1, x: 0, rotate: 0 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+            whileHover={{ rotate: -0.5, scale: 1.01 }}
+            className="relative"
           >
-            {rotatingTitles[titleIndex]}
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-8 max-w-xl text-base leading-relaxed text-stone-600"
-          >
-            I design thoughtful digital experiences with premium interaction design and refined visual systems.
-            I blend UI craft, accessibility, and frontend engineering into work that feels both artistic and professional.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-10 flex flex-wrap gap-4"
-          >
-            <MagneticButton href="#projects" className="bg-gradient-to-r from-rose-200 to-violet-200 text-stone-700 hover:from-rose-300 hover:to-violet-300">
-              View Projects <ArrowUpRight className="ml-2 h-4 w-4" />
-            </MagneticButton>
-            <MagneticButton href="#contact" className="hover:border-rose-300 hover:text-rose-500">
-              Contact Me
-            </MagneticButton>
+            <motion.div
+              animate={{ scale: [1, 1.06, 1], opacity: [0.2, 0.32, 0.2] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute -inset-4 rounded-[2rem] blur-2xl"
+              style={{ background: "linear-gradient(135deg, #E8B4C0, #A78BCA)" }}
+            />
+            <div className="relative rounded-[2rem] border border-rose-100 bg-white p-8 shadow-xl shadow-rose-200/25">
+              <div
+                className="font-display mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl text-3xl font-bold text-white shadow-lg"
+                style={{ background: "linear-gradient(135deg, #F5C6D8, #C084A0)" }}
+              >
+                ZO
+              </div>
+              <h3 className="font-display text-center text-xl font-bold text-stone-800">{PROFILE.name}</h3>
+              <p
+                className="mb-6 text-center text-[10px] font-bold uppercase tracking-[0.28em]"
+                style={{ color: "#C084A0" }}
+              >
+                UX Designer & Developer
+              </p>
+              <div className="mb-6 space-y-3">
+                {[
+                  { icon: MapPin, text: PROFILE.city },
+                  { icon: Mail, text: PROFILE.emailDisplay },
+                  { icon: Phone, text: PROFILE.phoneDisplay },
+                  { icon: GraduationCap, text: "SAIT — Grad 2026" },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-3 text-xs text-stone-600">
+                    <div
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+                      style={{ background: "rgba(232,180,192,0.18)" }}
+                    >
+                      <Icon size={13} style={{ color: "#C084A0" }} />
+                    </div>
+                    <span className="truncate font-medium">{text}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-2 border-t border-rose-50 pt-5">
+                {["Figma", "React", "Next.js", "WCAG"].map((s) => (
+                  <span
+                    key={s}
+                    className="cursor-default rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest"
+                    style={{ background: "rgba(192,132,160,0.1)", color: "#C084A0" }}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="relative overflow-hidden rounded-3xl border border-rose-100 bg-white/65 p-8 shadow-[0_20px_60px_rgba(190,152,177,0.2)] backdrop-blur-xl"
-        >
-          <div className="absolute -right-16 -top-14 h-40 w-40 rounded-full bg-rose-200/70 blur-3xl" />
-          <div className="absolute -bottom-12 left-10 h-36 w-36 rounded-full bg-violet-200/70 blur-3xl" />
-          <div className="relative space-y-5 text-stone-700">
-            <p className="text-xs uppercase tracking-[0.3em] text-stone-500">Current Focus</p>
-            <h3 className="text-2xl font-semibold text-stone-800">Elegant interfaces for modern digital products</h3>
-            <p className="text-sm leading-relaxed text-stone-600">
-              Building polished, interactive, and user-centered experiences with a soft luxury visual language.
-            </p>
-            <div className="grid grid-cols-2 gap-3 pt-3">
-              {["UX/UI Design", "Front-End Development", "Motion Systems", "Accessibility"].map((item) => (
-                <div key={item} className="rounded-xl border border-rose-100 bg-white/70 p-3 text-xs text-stone-600">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6 }}
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+      >
+        <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-stone-400">scroll</span>
+        <motion.div
+          className="h-10 w-px origin-top"
+          style={{ background: "linear-gradient(#E8B4C0, transparent)" }}
+          animate={{ scaleY: [0, 1, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        />
+      </motion.div>
     </section>
   );
 }

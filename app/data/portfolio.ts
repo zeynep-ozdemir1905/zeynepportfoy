@@ -11,17 +11,55 @@ export type Project = {
   details: string;
 };
 
-export const NAV = [
-  { id: "resume", label: "Resume", href: "/resume" },
-  { id: "projects", label: "Projects", href: "#projects" },
-  { id: "contact", label: "Contact", href: "#contact" },
+/** In-page anchors for footer / secondary navigation (header is minimal). */
+export const FOOTER_NAV = [
+  { label: "Resume", href: "#resume" },
+  { label: "Play", href: "#intro" },
+  { label: "Projects", href: "#projects" },
+  { label: "Internships", href: "#internships" },
+  { label: "Volunteer", href: "#volunteer" },
+  { label: "Coffee chat", href: "#contact" },
+  { label: "PDF-style resume", href: "/resume" },
 ];
+
+export const PROFILE = {
+  name: "Zeynep Ozdemir",
+  phoneDisplay: "(587) 664-6405",
+  phoneHref: "tel:+15876646405",
+  emailDisplay: "barikazeynep2@gmail.com",
+  emailHref: "mailto:barikazeynep2@gmail.com",
+  city: "Calgary, AB",
+  openToWork: true,
+};
 
 export const rotatingTitles = [
   "UI/UX Designer",
   "Front End Developer",
   "Creative Technologist",
 ];
+
+/** Skills ticker (marquee strip). */
+export const MARQUEE_ITEMS = [
+  "UX Design",
+  "•",
+  "React",
+  "•",
+  "Next.js",
+  "•",
+  "Figma",
+  "•",
+  "TypeScript",
+  "•",
+  "Prototyping",
+  "•",
+  "WCAG 2.1",
+  "•",
+  "Motion Design",
+  "•",
+  "React Native",
+  "•",
+  "Azure",
+] as const;
 
 export const aboutStats = [
   { label: "Projects Shipped", value: "5+" },
@@ -30,6 +68,7 @@ export const aboutStats = [
   { label: "Grad Year", value: "2026" },
 ];
 
+/** Professional roles shown in Experience (community-only roles stay in VOLUNTEER). */
 export const EXPERIENCE = [
   {
     date: "Dec 2025 - Present",
@@ -46,7 +85,7 @@ export const EXPERIENCE = [
     date: "Jun 2025 - Present",
     role: "Website & Engagement Manager",
     company: "IDI Calgary",
-    location: "Volunteer",
+    location: "Calgary, AB",
     bullets: [
       "Modernizing digital presence through WordPress optimization.",
       "Community-focused content strategy and UX improvements.",
@@ -56,11 +95,72 @@ export const EXPERIENCE = [
     date: "Jun 2025 - Aug 2025",
     role: "User Interface Designer",
     company: "Sky Air Supplies",
-    location: "CO-OP",
+    location: "Calgary, AB · CO-OP",
     bullets: [
       "Designed high-fidelity user interfaces and brought them to life.",
       "Collaborated with developers on component handoff and design systems.",
     ],
+  },
+];
+
+export type Internship = {
+  date: string;
+  title: string;
+  org: string;
+  location: string;
+  highlights: string[];
+};
+
+export const INTERNSHIPS: Internship[] = [
+  {
+    date: "Dec 2025 - Present",
+    title: "UX/UI Designer & Developer",
+    org: "MLC",
+    location: "Calgary, AB",
+    highlights: [
+      "Enterprise Figma systems and accessible UI delivery.",
+      "Front-end implementation for operational software.",
+    ],
+  },
+  {
+    date: "Jun 2025 - Aug 2025",
+    title: "User Interface Designer (Co-op)",
+    org: "Sky Air Supplies",
+    location: "Calgary, AB",
+    highlights: [
+      "Shipped polished UI from concept through developer handoff.",
+      "Partnered on component structure and responsive layouts.",
+    ],
+  },
+];
+
+export type VolunteerRole = {
+  title: string;
+  org?: string;
+  period?: string;
+  description: string;
+};
+
+export const VOLUNTEER: VolunteerRole[] = [
+  {
+    title: "Fundraiser Manager",
+    description:
+      "Planned and ran campaigns, coordinated volunteers, and kept donors engaged with clear storytelling and follow-through.",
+  },
+  {
+    title: "Fundraiser Assistant",
+    description:
+      "Supported event logistics, outreach, and donation tracking so teams could focus on community impact.",
+  },
+  {
+    title: "Graphic Designer",
+    description:
+      "Created social and print visuals in Figma and Adobe tools—balanced brand warmth with readable hierarchy.",
+  },
+  {
+    title: "Math Tutor",
+    description:
+      "Explained concepts patiently, built confidence, and adapted examples to how each student learns best.",
   },
 ];
 

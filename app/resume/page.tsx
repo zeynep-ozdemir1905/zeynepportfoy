@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const skills = {
@@ -75,56 +76,119 @@ const projects = [
   "MLC Subsea Navigation Website - Front-End Developer (Vite, JavaScript, CSS)",
 ];
 
+const heroImage =
+  "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1600&q=80";
+const sideImage =
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80";
+const accentImage =
+  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80";
+
 export default function ResumePage() {
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#fffdf9_0%,#fff6f2_100%)] px-6 py-12 text-stone-700">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-3xl font-semibold text-stone-800">Resume</h1>
-          <Link href="/" className="rounded-full border border-rose-200 bg-white px-4 py-2 text-sm text-rose-500 hover:bg-rose-50">
-            Back to Portfolio
+    <main className="min-h-screen bg-[#3a3350] text-stone-200">
+      <div className="relative h-[min(52vh,420px)] w-full overflow-hidden">
+        <Image
+          src={heroImage}
+          alt="Workspace photography for resume header"
+          fill
+          priority
+          className="object-cover opacity-90"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141018] via-[#141018]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141018]/80 via-transparent to-fuchsia-900/20" />
+        <div className="relative mx-auto flex h-full max-w-5xl flex-col justify-end px-6 pb-10 pt-24">
+          <Link
+            href="/"
+            className="absolute right-6 top-6 rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.2em] text-stone-100 backdrop-blur-md hover:border-fuchsia-400/50"
+          >
+            Portfolio
           </Link>
-        </div>
-
-        <section className="rounded-2xl border border-rose-100 bg-white/80 p-6 shadow-[0_12px_30px_rgba(196,166,178,0.14)]">
-          <h2 className="text-2xl font-semibold text-stone-800">Zeynep Ozdemir</h2>
-          <p className="mt-1 text-sm text-stone-600">Junior Software Developer - Frontend</p>
-          <p className="mt-2 text-sm text-stone-600">Calgary, AB (Open to BC and ON) · barikazeynep2@gmail.com · (587) 664-6405</p>
-          <p className="mt-4 leading-relaxed text-stone-600">
-            Frontend-focused Software Developer with hands-on experience building responsive, accessible web and mobile
-            applications using TypeScript, React, and Next.js. Proven ability to translate design prototypes into
-            production-ready interfaces, collaborate in agile cross-functional teams, and contribute across the
-            software delivery lifecycle from code review to shipping.
+          <p className="text-xs uppercase tracking-[0.4em] text-fuchsia-200/90">Resume · high fidelity</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">Zeynep Ozdemir</h1>
+          <p className="mt-2 text-sm text-stone-300">Junior Software Developer · Frontend · Calgary, AB</p>
+          <p className="mt-3 max-w-xl text-xs leading-relaxed text-stone-500 sm:text-[13px] sm:text-stone-400">
+            <span className="block sm:inline">barikazeynep2@gmail.com</span>
+            <span className="mx-0 text-stone-600 sm:mx-2" aria-hidden>
+              ·
+            </span>
+            <span className="block sm:inline">(587) 664-6405</span>
+            <span className="mx-0 text-stone-600 sm:mx-2" aria-hidden>
+              ·
+            </span>
+            <span className="text-stone-400">Open to work</span>
           </p>
-        </section>
+        </div>
+      </div>
 
-        <section className="mt-6 rounded-2xl border border-rose-100 bg-white/80 p-6 shadow-[0_12px_30px_rgba(196,166,178,0.14)]">
-          <h3 className="text-xl font-semibold text-stone-800">Technical Skills</h3>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {Object.entries(skills).map(([group, items]) => (
-              <div key={group}>
-                <p className="text-sm font-semibold text-rose-500">{group}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <span key={item} className="rounded-full border border-rose-100 bg-[#fffaf7] px-3 py-1 text-xs">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+      <div className="mx-auto max-w-5xl space-y-8 px-6 py-12">
+        <section className="grid gap-6 overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative min-h-[220px] w-full shrink-0 overflow-hidden lg:min-h-[300px]">
+            <Image
+              src={sideImage}
+              alt="Team collaboration photography"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-900/90 lg:bg-gradient-to-t lg:from-zinc-900/20 lg:to-zinc-900/90" />
+          </div>
+          <div className="p-8">
+            <h2 className="text-xl font-semibold text-stone-100">Summary</h2>
+            <p className="mt-4 leading-relaxed text-stone-400">
+              Frontend-focused Software Developer with hands-on experience building responsive, accessible web and mobile
+              applications using TypeScript, React, and Next.js. Proven ability to translate design prototypes into
+              production-ready interfaces, collaborate in agile cross-functional teams, and contribute across the
+              software delivery lifecycle from code review to shipping.
+            </p>
           </div>
         </section>
 
-        <section className="mt-6 rounded-2xl border border-rose-100 bg-white/80 p-6 shadow-[0_12px_30px_rgba(196,166,178,0.14)]">
-          <h3 className="text-xl font-semibold text-stone-800">Experience</h3>
-          <div className="mt-5 space-y-5">
+        <section className="rounded-3xl border border-white/10 bg-zinc-900/50 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start">
+            <div className="relative h-48 w-full shrink-0 overflow-hidden rounded-2xl border border-white/10 md:h-56 md:w-52">
+              <Image
+                src={accentImage}
+                alt="Creative workspace photography"
+                fill
+                className="object-cover"
+                sizes="208px"
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-xl font-semibold text-stone-100">Technical skills</h3>
+              <div className="mt-5 grid gap-5 md:grid-cols-2">
+                {Object.entries(skills).map(([group, items]) => (
+                  <div key={group}>
+                    <p className="text-sm font-semibold text-fuchsia-200/90">{group}</p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-stone-300"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-white/10 bg-zinc-900/50 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+          <h3 className="text-xl font-semibold text-stone-100">Experience</h3>
+          <div className="mt-6 space-y-6">
             {experience.map((item) => (
-              <article key={`${item.company}-${item.role}`}>
-                <h4 className="text-base font-semibold text-stone-800">{item.role}</h4>
-                <p className="text-sm text-rose-500">{item.company} · {item.location}</p>
+              <article key={`${item.company}-${item.role}`} className="border-b border-white/5 pb-6 last:border-0 last:pb-0">
+                <h4 className="text-base font-semibold text-stone-100">{item.role}</h4>
+                <p className="text-sm text-fuchsia-200/90">
+                  {item.company} · {item.location}
+                </p>
                 <p className="text-xs uppercase tracking-[0.2em] text-stone-500">{item.period}</p>
-                <ul className="mt-2 space-y-1.5 text-sm text-stone-600">
+                <ul className="mt-3 space-y-1.5 text-sm text-stone-400">
                   {item.bullets.map((bullet) => (
                     <li key={bullet}>• {bullet}</li>
                   ))}
@@ -134,24 +198,26 @@ export default function ResumePage() {
           </div>
         </section>
 
-        <section className="mt-6 rounded-2xl border border-rose-100 bg-white/80 p-6 shadow-[0_12px_30px_rgba(196,166,178,0.14)]">
-          <h3 className="text-xl font-semibold text-stone-800">Projects</h3>
-          <ul className="mt-3 space-y-2 text-sm text-stone-600">
+        <section className="rounded-3xl border border-white/10 bg-zinc-900/50 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+          <h3 className="text-xl font-semibold text-stone-100">Projects</h3>
+          <ul className="mt-4 space-y-2 text-sm text-stone-400">
             {projects.map((project) => (
               <li key={project}>• {project}</li>
             ))}
           </ul>
         </section>
 
-        <section className="mt-6 rounded-2xl border border-rose-100 bg-white/80 p-6 shadow-[0_12px_30px_rgba(196,166,178,0.14)]">
-          <h3 className="text-xl font-semibold text-stone-800">Education</h3>
-          <div className="mt-3 space-y-3 text-sm text-stone-600">
+        <section className="rounded-3xl border border-white/10 bg-zinc-900/50 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+          <h3 className="text-xl font-semibold text-stone-100">Education</h3>
+          <div className="mt-4 space-y-4 text-sm text-stone-400">
             <p>
-              <span className="font-semibold text-stone-800">Bachelor of Information Technology (Software Development)</span><br />
+              <span className="font-semibold text-stone-100">Bachelor of Information Technology (Software Development)</span>
+              <br />
               Southern Alberta Institute of Technology (SAIT), Calgary, AB · Expected April 2028
             </p>
             <p>
-              <span className="font-semibold text-stone-800">Diploma, Information Technology (Software Development)</span><br />
+              <span className="font-semibold text-stone-100">Diploma, Information Technology (Software Development)</span>
+              <br />
               Southern Alberta Institute of Technology (SAIT), Calgary, AB · April 2026
             </p>
           </div>
