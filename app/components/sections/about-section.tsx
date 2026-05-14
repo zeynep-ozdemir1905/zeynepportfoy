@@ -14,7 +14,7 @@ export function AboutSection() {
         <SectionReveal className={card}>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-rose-500">About me</p>
           <h2 className="font-display mt-4 text-3xl font-semibold text-stone-800">
-            Creative technologist with an eye for elegant UI systems
+            UX/UI designer and front-end developer crafting refined digital products
           </h2>
           <p className="mt-5 text-sm font-light leading-relaxed text-stone-600">
             I specialize in UX/UI design and front-end development, creating refined products with smooth interactions,

@@ -78,7 +78,7 @@ export function ContactSection() {
               <MagneticButton
                 href={coffeeMail}
                 cursorBlend
-                className="w-full border-transparent bg-gradient-to-r from-[#E8B4C0] to-[#C084A0] text-white hover:from-[#f0c4ce] hover:to-[#c994a8]"
+                className="w-full border-transparent bg-linear-to-r from-[#E8B4C0] to-[#C084A0] text-white hover:from-[#f0c4ce] hover:to-[#c994a8]"
               >
                 Open email to collaborate <Send className="ml-2 h-4 w-4" />
               </MagneticButton>

@@ -26,7 +26,7 @@ export function InteractiveResumeSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-rose-500">Interactive resume</p>
           <h2 className="font-display mt-4 text-3xl font-semibold text-stone-800">Tap through the highlights</h2>
           <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-stone-600">
-            A quick, playful tour of my background—switch tabs to explore education, stats, and skills without leaving the
+            A quick, tour of my background—switch tabs to explore education, stats, and skills without leaving the
             page.
           </p>
         </SectionReveal>

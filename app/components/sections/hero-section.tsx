@@ -110,7 +110,7 @@ export function HeroSection() {
             >
               <MagneticButton
                 href="#projects"
-                className="border-transparent bg-gradient-to-r from-[#E8B4C0] to-[#C084A0] text-white shadow-[0_12px_40px_rgba(192,132,160,0.3)] hover:from-[#f0c4ce] hover:to-[#c994a8]"
+                className="border-transparent bg-linear-to-r from-[#E8B4C0] to-[#C084A0] text-white shadow-[0_12px_40px_rgba(192,132,160,0.3)] hover:from-[#f0c4ce] hover:to-[#c994a8]"
               >
                 View projects <ArrowUpRight className="ml-2 h-4 w-4" />
               </MagneticButton>
@@ -166,10 +166,10 @@ export function HeroSection() {
             <motion.div
               animate={{ scale: [1, 1.06, 1], opacity: [0.2, 0.32, 0.2] }}
               transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -inset-4 rounded-[2rem] blur-2xl"
+              className="absolute -inset-4 rounded-4xl blur-2xl"
               style={{ background: "linear-gradient(135deg, #E8B4C0, #A78BCA)" }}
             />
-            <div className="relative rounded-[2rem] border border-rose-100 bg-white p-8 shadow-xl shadow-rose-200/25">
+            <div className="relative rounded-4xl border border-rose-100 bg-white p-8 shadow-xl shadow-rose-200/25">
               <div
                 className="font-display mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl text-3xl font-bold text-white shadow-lg"
                 style={{ background: "linear-gradient(135deg, #F5C6D8, #C084A0)" }}
@@ -202,7 +202,7 @@ export function HeroSection() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-2 border-t border-rose-50 pt-5">
-                {["Figma", "React", "Next.js", "WCAG"].map((s) => (
+                {["Figma", "React", "Next.js", "UserInterface"].map((s) => (
                   <span
                     key={s}
                     className="cursor-default rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest"

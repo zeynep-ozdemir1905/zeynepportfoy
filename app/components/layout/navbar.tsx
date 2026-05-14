@@ -29,7 +29,7 @@ export function Navbar({ mobileOpen, onToggle }: NavbarProps) {
         borderBottom: scrolled ? "1px solid rgba(192,132,160,0.12)" : "1px solid transparent",
       }}
     >
-      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-start justify-between gap-3 px-5 pt-3 md:h-16 md:items-center md:px-6 md:pt-0">
+      <div className="mx-auto flex h-17 max-w-6xl items-start justify-between gap-3 px-5 pt-3 md:h-16 md:items-center md:px-6 md:pt-0">
         <div className="flex min-w-0 flex-1 flex-col gap-2 md:flex-row md:items-center md:gap-6">
           <a
             href="#intro"

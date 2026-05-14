@@ -68,6 +68,19 @@ const experience = [
       "Tracked analytics and used data-driven insights to improve content strategy.",
     ],
   },
+  {
+    role: "UI Designer (Intern)",
+    company: "Drill Sense",
+    period: "2025-2026 January",
+    location: "Calgary, AB",
+    bullets: [
+      "Designed high-fidelity UI mockups and prototypes in Figma.",
+      "Created campaign visuals in Figma and Adobe XD for events and communications.",
+      "Designed user interfaces that prioritize usability and accessibility.",
+      "Tracked analytics and used data-driven insights to improve user experience.",
+    ],
+  },
+
 ];
 
 const projects = [
@@ -95,8 +108,8 @@ export default function ResumePage() {
           className="object-cover opacity-90"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#141018] via-[#141018]/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#141018]/80 via-transparent to-fuchsia-900/20" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#141018] via-[#141018]/70 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#141018]/80 via-transparent to-fuchsia-900/20" />
         <div className="relative mx-auto flex h-full max-w-5xl flex-col justify-end px-6 pb-10 pt-24">
           <Link
             href="/"
@@ -123,7 +136,7 @@ export default function ResumePage() {
 
       <div className="mx-auto max-w-5xl space-y-8 px-6 py-12">
         <section className="grid gap-6 overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="relative min-h-[220px] w-full shrink-0 overflow-hidden lg:min-h-[300px]">
+          <div className="relative min-h-55 w-full shrink-0 overflow-hidden lg:min-h-75">
             <Image
               src={sideImage}
               alt="Team collaboration photography"
@@ -131,7 +144,7 @@ export default function ResumePage() {
               className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-900/90 lg:bg-gradient-to-t lg:from-zinc-900/20 lg:to-zinc-900/90" />
+            <div className="absolute inset-0 bg-linear-to-r from-transparent to-zinc-900/90 lg:bg-linear-to-t lg:from-zinc-900/20 lg:to-zinc-900/90" />
           </div>
           <div className="p-8">
             <h2 className="text-xl font-semibold text-stone-100">Summary</h2>

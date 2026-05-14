@@ -32,7 +32,7 @@ export function CustomCursor() {
   return (
     <>
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[100] hidden rounded-full md:block"
+        className="pointer-events-none fixed left-0 top-0 z-100 hidden rounded-full md:block"
         style={{
           x: cx,
           y: cy,
@@ -44,7 +44,7 @@ export function CustomCursor() {
         }}
       />
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[99] hidden rounded-full border md:block"
+        className="pointer-events-none fixed left-0 top-0 z-99 hidden rounded-full border md:block"
         style={{
           x: sx,
           y: sy,
