@@ -5,7 +5,7 @@ const skills = {
   Languages: ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3"],
   Frameworks: ["React", "React Native (Expo)", "Next.js", "Tailwind CSS"],
   "Tools & CI/CD": ["Git", "GitHub", "Vite", "Jenkins (familiar)", "npm / package management"],
-  "Design & UX": ["Figma", "Adobe XD", "Responsive Design", "Accessibility", "WordPress"],
+  "Design & UX": ["Figma", "Adobe XD", "Responsive Design", "Accessibility", "WordPress", "Canva"],
   Exposure: [
     "Agile / Scrum",
     "Code Review",
@@ -26,7 +26,7 @@ const experience = [
     period: "2024 - Present",
     location: "Calgary, AB",
     bullets: [
-      "Designed and implemented reusable, responsive UI components using Next.js, TypeScript, HTML, and CSS with WCAG accessibility standards.",
+      "Designed and implemented reusable, responsive UI components using Next.js, TypeScript, HTML, and CSS with user-centered accessibility standards.",
       "Translated Figma prototypes into production-ready interfaces, bridging design and engineering in agile delivery.",
       "Participated in iterative development cycles, code review, and documentation to support team quality.",
       "Conducted user research and integrated feedback to improve usability and release quality.",

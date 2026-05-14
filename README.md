@@ -11,7 +11,7 @@ I believe that digital tools should be intentional—not just functional. My goa
 UX/UI Design & Front-End Development
 I bridge the gap between "how it looks" and "how it works." I specialize in taking high-fidelity Figma prototypes and bringing them to life using React, Next.js, and React Native. My focus is always on:
 
-Accessibility: Ensuring every user can navigate seamlessly (WCAG standards).
+Accessibility: Ensuring every user can navigate seamlessly (user accessibility standards).
 
 Industrial UX: Simplifying complex, real-time data into intuitive dashboards.
 

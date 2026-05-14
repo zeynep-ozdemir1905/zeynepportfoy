@@ -52,7 +52,7 @@ export const MARQUEE_ITEMS = [
   "•",
   "Prototyping",
   "•",
-  "WCAG 2.1",
+  "User-Centered Accessibility",
   "•",
   "Motion Design",
   "•",
@@ -64,21 +64,23 @@ export const MARQUEE_ITEMS = [
 export const aboutStats = [
   { label: "Projects Shipped", value: "5+" },
   { label: "Industry Roles", value: "3" },
-  { label: "Accessibility", value: "WCAG" },
+  { label: "Accessibility", value: "User-Centered" },
   { label: "Grad Year", value: "2026" },
 ];
 
 /** Professional roles shown in Experience (community-only roles stay in VOLUNTEER). */
 export const EXPERIENCE = [
   {
-    date: "Dec 2025 - Present",
+    date: "Feb 2026 - Present",
     role: "UX/UI Designer & Developer",
     company: "MLC",
-    location: "Calgary, AB",
+    location: "Calgary, AB · Internship",
     bullets: [
       "Creating Figma designs for enterprise applications.",
       "Leading transitions to improve software responsiveness.",
       "Implementing front end for enterprise applications.",
+      "Used Tailwind CSS to style the website and implemented it using React and Next.js.",
+      "Used TypeScript to type the website and implemented it using React and Next.js.",
     ],
   },
   {
@@ -89,6 +91,10 @@ export const EXPERIENCE = [
     bullets: [
       "Modernizing digital presence through WordPress optimization.",
       "Community-focused content strategy and UX improvements.",
+      "Managed Instagram, Facebook, and YouTube content to increase engagement and brand visibility.",
+      "Created campaign visuals in Figma and Adobe XD for events and communications.",
+      "Maintained WordPress content and improved site performance, SEO, and usability.",
+      "Used Canva to create campaign visuals and social media content.",
     ],
   },
   {
@@ -99,6 +105,19 @@ export const EXPERIENCE = [
     bullets: [
       "Designed high-fidelity user interfaces and brought them to life.",
       "Collaborated with developers on component handoff and design systems.",
+    ],
+  },
+  {
+    date: "Dec 2025 - Feb 2026",
+    role: "User Interface Designer & Developer",
+    company: "Drill Sense",
+    location: "Calgary, AB · Internship",
+    bullets: [
+      "Designed and developed a responsive website for the Calgary Public Library.",
+      "Collaborated with the library's team to improve the website's usability and accessibility.",
+      "Used Figma to design the website and implemented it using React and Next.js.",
+      "Did user research and testing to improve the website's usability and accessibility.",
+      "Designed high-fidelity user interfaces and brought them to life."
     ],
   },
 ];

@@ -98,8 +98,8 @@ export function HeroSection() {
               transition={{ duration: 0.75, delay: 0.15 }}
               className="mt-8 max-w-xl text-base font-light leading-relaxed text-stone-600"
             >
-              I design warm, accessible interfaces with a soft-luxury feel—pairing UI craft with frontend engineering so
-              products feel polished and human.
+              I design user-centered, accessible interfaces with a soft-luxury feel—pairing UI craft with frontend engineering so
+              products feel polished and user-friendly.
             </motion.p>
 
             <motion.div
