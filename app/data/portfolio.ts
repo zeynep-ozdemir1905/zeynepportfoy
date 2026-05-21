@@ -1,3 +1,5 @@
+export type DevicePreview = "mobile" | "desktop" | "dual";
+
 export type Project = {
   id: string;
   number: string;
@@ -6,10 +8,27 @@ export type Project = {
   description: string;
   tech: string[];
   accent: string;
+  /** How the project appears in device chrome (Figma-style frames) */
+  device: DevicePreview;
+  /** Figma design file embed (iframe) */
   figma?: string;
+  /** Figma prototype — opens in Figma (not embedded) */
+  prototype?: string;
   live?: string;
   details: string;
 };
+
+/** External link: live site, prototype, or figma */
+export function projectPreviewLink(project: Project) {
+  return project.live ?? project.prototype ?? project.figma;
+}
+
+/** URL safe to load inside an iframe (excludes raw Figma /proto links) */
+export function projectEmbedSrc(project: Project) {
+  if (project.live) return project.live;
+  if (project.figma && !project.figma.includes("/proto/")) return project.figma;
+  return undefined;
+}
 
 /** In-page anchors for footer / secondary navigation (header is minimal). */
 export const FOOTER_NAV = [
@@ -33,10 +52,20 @@ export const PROFILE = {
 };
 
 export const rotatingTitles = [
-  "UI/UX Designer",
-  "Front End Developer",
-  "Creative Technologist",
+  "UX/UI Designer",
+  "Front-End Developer",
+  "Product-minded Engineer",
 ];
+
+/** Hero — recruiter-first messaging */
+export const HERO_COPY = {
+  badge: "Open to full-time · Co-op · Contract",
+  headline: "I ship accessible interfaces that teams can hire with confidence.",
+  subline:
+    "Calgary-based UX/UI designer and front-end developer. I translate Figma into production React/Next.js, care about WCAG, and communicate clearly with engineers and stakeholders.",
+  primaryCta: "See my work",
+  secondaryCta: "Schedule a conversation",
+};
 
 /** Skills ticker (marquee strip). */
 export const MARQUEE_ITEMS = [
@@ -224,7 +253,8 @@ export const projects: Project[] = [
     description:
       "Workforce management system for industrial employee check-ins.",
     tech: ["React Expo", "Azure", "UI Design"],
-    accent: "linear-gradient(135deg, #ffe1ea 0%, #ffd8f0 100%)",
+    accent: "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
+    device: "mobile",
     figma:
       "https://embed.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee?node-id=0-1&embed-host=share",
     details:
@@ -238,9 +268,10 @@ export const projects: Project[] = [
     description:
       "Enterprise accessibility dashboard for oilfield operators.",
     tech: ["React", "Figma", "Data Visualization"],
-    accent: "linear-gradient(135deg, #e9ddff 0%, #ffe3f5 100%)",
-    figma:
-      "https://embed.figma.com/design/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&embed-host=share",
+    accent: "linear-gradient(135deg, #e0f2fe 0%, #93c5fd 100%)",
+    device: "desktop",
+    prototype:
+      "https://www.figma.com/proto/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&t=U6d9Nk78Tav6tFYn-1",
     details:
       "Built with accessibility-first principles and structured data clarity for real-world industrial decision-making.",
   },
@@ -252,7 +283,8 @@ export const projects: Project[] = [
     description:
       "A polished UI concept focused on delightful mobile gifting interactions.",
     tech: ["UI Design", "Figma", "Prototyping"],
-    accent: "linear-gradient(135deg, #ffe9d9 0%, #ffe5ef 100%)",
+    accent: "linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%)",
+    device: "mobile",
     figma:
       "https://embed.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep?node-id=0-1&embed-host=share",
     details:
@@ -266,7 +298,8 @@ export const projects: Project[] = [
     description:
       "Platform for Alberta students and academic guidance.",
     tech: ["UI Design", "Lead Designer", "Front End Development"],
-    accent: "linear-gradient(135deg, #fff0d9 0%, #ffdfe8 100%)",
+    accent: "linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%)",
+    device: "desktop",
     live: "https://campus-navigator-seven.vercel.app/",
     details:
       "Focused on clarity, student-first navigation, and an approachable information architecture for guidance journeys.",
@@ -278,7 +311,8 @@ export const projects: Project[] = [
     category: "Web Application",
     description: "Volunteer opportunity platform connecting people with community impact.",
     tech: ["UI Design", "Lead Designer", "Front End Development"],
-    accent: "linear-gradient(135deg, #ffe3f7 0%, #ece4ff 100%)",
+    accent: "linear-gradient(135deg, #dbeafe 0%, #1e3a5f 35%, #93c5fd 100%)",
+    device: "dual",
     live: "https://cprg306-project-volunteeringplatform.vercel.app/",
     details:
       "An accessible, user-friendly experience for discovering opportunities, applying, and tracking volunteer progress.",

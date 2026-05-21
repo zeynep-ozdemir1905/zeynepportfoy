@@ -1,13 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdfaf7;
-  --foreground: #292524;
-  --muted: #78716c;
-  --card: #ffffff;
-  --accent-rose: #e8b4c0;
-  --accent-mauve: #c084a0;
-  --accent-violet: #a78bca;
+  --navy-950: #0a1220;
+  --navy-900: #0f172a;
+  --navy-800: #1e3a5f;
+  --navy-700: #1e40af;
+  --pastel-50: #f0f7ff;
+  --pastel-100: #dbeafe;
+  --pastel-200: #bfdbfe;
+  --pastel-300: #93c5fd;
+  --sky: #38bdf8;
+  --background: var(--pastel-50);
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --card: rgba(255, 255, 255, 0.92);
+  --accent: #2563eb;
+  --accent-light: #60a5fa;
 }
 
 @theme inline {
@@ -32,13 +40,92 @@ body {
   font-family: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
 }
 
+/* Navy + pastel utility layer */
+.text-gradient {
+  background: linear-gradient(135deg, var(--navy-800) 0%, var(--accent) 50%, var(--sky) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.glass-card {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  background: var(--card);
+  box-shadow:
+    0 4px 24px rgba(15, 23, 42, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  backdrop-filter: blur(12px);
+}
+
+.glass-card-dark {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(147, 197, 253, 0.2);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(30, 58, 95, 0.88));
+  box-shadow: 0 20px 50px rgba(10, 18, 32, 0.35);
+  color: #f1f5f9;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: white;
+  background: linear-gradient(135deg, var(--navy-800), var(--accent));
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 16px 48px rgba(37, 99, 235, 0.38);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+  border: 1px solid rgba(147, 197, 253, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-light);
+  background: white;
+}
+
+.section-alt {
+  background: linear-gradient(180deg, rgba(219, 234, 254, 0.35) 0%, rgba(240, 247, 255, 0) 100%);
+}
+
 ::selection {
-  background: rgba(232, 180, 192, 0.45);
-  color: #1c1917;
+  background: rgba(147, 197, 253, 0.55);
+  color: var(--navy-900);
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -46,6 +133,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#e8b4c0, #c084a0);
+  background: linear-gradient(var(--navy-800), var(--accent));
   border-radius: 99px;
 }

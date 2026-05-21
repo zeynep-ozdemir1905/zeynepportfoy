@@ -20,9 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zeynep Ozdemir | Premium Developer Portfolio",
+  title: "Zeynep Ozdemir | UX/UI Designer & Front-End Developer",
   description:
-    "Software developer and UI/UX designer portfolio featuring high-end interactive web experiences, full stack projects, and modern product engineering.",
+    "Portfolio of Zeynep Ozdemir — UX/UI design and front-end development in Calgary. Enterprise UI, React/Next.js, accessible products, and shipped capstone & client work.",
 };
 
 export default function RootLayout({

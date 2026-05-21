@@ -7,11 +7,10 @@ type MagneticButtonProps = {
   children: ReactNode;
   className?: string;
   href?: string;
-  /** Rose ring uses mix-blend-mode on supported targets */
-  cursorBlend?: boolean;
+  variant?: "primary" | "secondary" | "ghost";
 };
 
-export function MagneticButton({ children, className = "", href, cursorBlend }: MagneticButtonProps) {
+export function MagneticButton({ children, className = "", href, variant = "ghost" }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement | null>(null);
 
   const handleMove = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -20,7 +19,7 @@ export function MagneticButton({ children, className = "", href, cursorBlend }: 
     const rect = element.getBoundingClientRect();
     const x = event.clientX - rect.left - rect.width / 2;
     const y = event.clientY - rect.top - rect.height / 2;
-    element.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+    element.style.transform = `translate(${x * 0.14}px, ${y * 0.14}px)`;
   };
 
   const reset = () => {
@@ -28,16 +27,22 @@ export function MagneticButton({ children, className = "", href, cursorBlend }: 
     ref.current.style.transform = "translate(0px, 0px)";
   };
 
+  const base =
+    variant === "primary"
+      ? "btn-primary"
+      : variant === "secondary"
+        ? "btn-secondary"
+        : "inline-flex items-center justify-center rounded-full border border-[#93c5fd]/70 bg-white/90 px-6 py-3 text-sm font-semibold tracking-wide text-[#0f172a] shadow-[0_8px_28px_rgba(30,58,95,0.08)]";
+
   return (
     <motion.a
       ref={ref}
       href={href}
-      data-cursor-big
-      data-cursor-blend={cursorBlend ? true : undefined}
       onMouseMove={handleMove}
       onMouseLeave={reset}
+      whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
-      className={`inline-flex items-center justify-center rounded-full border border-rose-200/80 bg-white/80 px-6 py-3 text-sm font-medium tracking-wide text-stone-700 shadow-[0_8px_28px_rgba(192,132,160,0.12)] transition ${className}`}
+      className={`${base} transition ${className}`}
     >
       {children}
     </motion.a>

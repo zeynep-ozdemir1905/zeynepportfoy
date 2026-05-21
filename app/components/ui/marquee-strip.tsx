@@ -19,11 +19,8 @@ export function MarqueeStrip() {
 
   return (
     <div
-      className="relative select-none overflow-hidden border-y py-5"
-      style={{
-        borderColor: "rgba(192,132,160,0.15)",
-        background: "rgba(253,240,245,0.55)",
-      }}
+      className="relative select-none overflow-hidden border-y border-[#93c5fd]/30 py-5"
+      style={{ background: "linear-gradient(90deg, #0f172a, #1e3a5f)" }}
     >
       <motion.div className="flex whitespace-nowrap" style={{ x }}>
         {row.map((item, i) => (
@@ -32,7 +29,7 @@ export function MarqueeStrip() {
             className="inline-block px-6 text-[11px] font-bold uppercase tracking-[0.2em]"
             style={{
               minWidth: ITEM_W,
-              color: item === "•" ? "#E8B4C0" : "#C9A0B0",
+              color: item === "•" ? "#7dd3fc" : "#bfdbfe",
             }}
           >
             {item}

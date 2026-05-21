@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, GraduationCap, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { MagneticButton } from "@/app/components/ui/magnetic-button";
-import { PROFILE, rotatingTitles, socials } from "@/app/data/portfolio";
+import { HERO_COPY, PROFILE, aboutStats, rotatingTitles, socials } from "@/app/data/portfolio";
+import { staggerContainer, staggerItem } from "@/app/lib/motion";
 import { useEffect, useState } from "react";
 
 const iconMap = { GitHub: Github, LinkedIn: Linkedin, Email: Mail } as const;
@@ -14,7 +15,7 @@ export function HeroSection() {
   useEffect(() => {
     const interval = window.setInterval(() => {
       setTitleIndex((prev) => (prev + 1) % rotatingTitles.length);
-    }, 2200);
+    }, 2400);
     return () => window.clearInterval(interval);
   }, []);
 
@@ -23,111 +24,80 @@ export function HeroSection() {
   return (
     <section
       id="intro"
-      className="relative flex min-h-screen scroll-mt-28 items-center overflow-hidden px-6 pb-16 pt-32 md:pt-36"
+      className="relative flex min-h-screen scroll-mt-28 items-center overflow-hidden px-6 pb-20 pt-28 md:pt-32"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          animate={{ rotate: [0, 6, 0], scale: [1, 1.03, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -right-32 -top-32 h-[min(700px,90vw)] w-[min(700px,90vw)] rounded-[50%_0_50%_0] opacity-[0.12]"
-          style={{ background: "linear-gradient(135deg, #FBDCE8, #E8B4C0)" }}
-        />
-        <motion.div
-          animate={{ rotate: [0, -5, 0], scale: [1, 1.04, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-16 -left-16 h-72 w-72 rounded-[50%_0_50%_0] opacity-[0.1]"
-          style={{ background: "linear-gradient(135deg, #F5C6D8, #A78BCA)" }}
-        />
-      </div>
+      <motion.div
+        className="pointer-events-none absolute -right-40 -top-32 h-[min(640px,85vw)] w-[min(640px,85vw)] rounded-full opacity-40 blur-3xl"
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        style={{ background: "radial-gradient(circle, #93c5fd, transparent 70%)" }}
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
-        <div className="grid items-center gap-14 lg:grid-cols-[1fr_380px]">
-          <div>
+        <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_360px]">
+          <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65 }}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2"
-              style={{
-                background: "rgba(253,240,245,0.9)",
-                borderColor: "rgba(232,180,192,0.45)",
-              }}
+              variants={staggerItem}
+              className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#93c5fd]/60 bg-white/90 px-4 py-2 shadow-sm"
             >
               <motion.span
-                animate={{ scale: [1, 1.35, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="h-2 w-2 rounded-full bg-emerald-400"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 1.4, repeat: Infinity }}
+                className="h-2 w-2 rounded-full bg-emerald-500"
               />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-rose-500">
-                Open to opportunities · {PROFILE.city}
+              <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#1e40af]">
+                {HERO_COPY.badge} · {PROFILE.city}
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.05 }}
-              className="font-display text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-[0.92] tracking-tight text-stone-800"
+              variants={staggerItem}
+              className="font-display text-[clamp(2.5rem,7vw,4.75rem)] font-bold leading-[0.95] tracking-tight text-[#0f172a]"
             >
-              Zeynep
-              <br />
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #E8B4C0 0%, #C084A0 45%, #A78BCA 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                Ozdemir
-              </span>
+              Zeynep{" "}
+              <span className="text-gradient block sm:inline">Ozdemir</span>
             </motion.h1>
 
-            <motion.div
-              key={titleIndex}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-5 text-lg font-light text-stone-500 md:text-2xl"
-            >
-              {rotatingTitles[titleIndex]}
+            <motion.div key={titleIndex} variants={staggerItem} className="mt-4">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-lg font-medium text-[#2563eb] md:text-xl"
+              >
+                {rotatingTitles[titleIndex]}
+              </motion.p>
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.15 }}
-              className="mt-8 max-w-xl text-base font-light leading-relaxed text-stone-600"
-            >
-              I design user-centered, accessible interfaces with a soft-luxury feel—pairing UI craft with frontend engineering so
-              products feel polished and user-friendly.
+            <motion.p variants={staggerItem} className="mt-6 max-w-xl text-lg font-semibold leading-snug text-[#1e3a5f]">
+              {HERO_COPY.headline}
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.22 }}
-              className="mt-10 flex flex-wrap gap-3"
-            >
-              <MagneticButton
-                href="#projects"
-                className="border-transparent bg-linear-to-r from-[#E8B4C0] to-[#C084A0] text-white shadow-[0_12px_40px_rgba(192,132,160,0.3)] hover:from-[#f0c4ce] hover:to-[#c994a8]"
-              >
-                View projects <ArrowUpRight className="ml-2 h-4 w-4" />
+            <motion.p variants={staggerItem} className="mt-4 max-w-xl text-base font-light leading-relaxed text-slate-600">
+              {HERO_COPY.subline}
+            </motion.p>
+
+            <motion.div variants={staggerItem} className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {aboutStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-xl border border-[#bfdbfe]/80 bg-white/80 px-3 py-3 text-center shadow-sm"
+                >
+                  <p className="text-lg font-bold text-[#1e40af]">{stat.value}</p>
+                  <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-wider text-slate-500">{stat.label}</p>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div variants={staggerItem} className="mt-10 flex flex-wrap gap-3">
+              <MagneticButton href="#projects" variant="primary">
+                {HERO_COPY.primaryCta} <ArrowUpRight className="ml-2 h-4 w-4" />
               </MagneticButton>
-              <MagneticButton
-                href="#contact"
-                className="border-stone-200 bg-white/90 text-stone-700 hover:border-rose-200 hover:text-stone-900"
-              >
-                Book a coffee chat
+              <MagneticButton href="#contact" variant="secondary">
+                {HERO_COPY.secondaryCta}
               </MagneticButton>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.28 }}
-              className="mt-10 flex flex-wrap items-center gap-5"
-            >
+            <motion.div variants={staggerItem} className="mt-10 flex flex-wrap items-center gap-5">
               {webSocials.map(({ label, href }) => {
                 const Icon = iconMap[label as keyof typeof iconMap];
                 if (!Icon) return null;
@@ -137,9 +107,8 @@ export function HeroSection() {
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    data-cursor-big
-                    whileHover={{ y: -2, color: "#C084A0" }}
-                    className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-stone-500"
+                    whileHover={{ y: -2 }}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-[#2563eb]"
                   >
                     <Icon size={15} /> {label}
                   </motion.a>
@@ -147,66 +116,56 @@ export function HeroSection() {
               })}
               <motion.a
                 href={PROFILE.emailHref}
-                data-cursor-big
-                whileHover={{ y: -2, color: "#C084A0" }}
-                className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-stone-500"
+                whileHover={{ y: -2 }}
+                className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-[#2563eb]"
               >
                 <Mail size={15} /> Email
               </motion.a>
             </motion.div>
-          </div>
+          </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40, rotate: 2 }}
+            initial={{ opacity: 0, x: 48, rotate: 1.5 }}
             animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-            whileHover={{ rotate: -0.5, scale: 1.01 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+            whileHover={{ y: -4 }}
             className="relative"
           >
-            <motion.div
-              animate={{ scale: [1, 1.06, 1], opacity: [0.2, 0.32, 0.2] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -inset-4 rounded-4xl blur-2xl"
-              style={{ background: "linear-gradient(135deg, #E8B4C0, #A78BCA)" }}
-            />
-            <div className="relative rounded-4xl border border-rose-100 bg-white p-8 shadow-xl shadow-rose-200/25">
+            <div className="glass-card-dark relative overflow-hidden p-8">
               <div
-                className="font-display mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl text-3xl font-bold text-white shadow-lg"
-                style={{ background: "linear-gradient(135deg, #F5C6D8, #C084A0)" }}
+                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full opacity-30 blur-2xl"
+                style={{ background: "#38bdf8" }}
+              />
+              <div
+                className="font-display relative z-10 mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-2xl text-3xl font-bold text-white"
+                style={{ background: "linear-gradient(135deg, #2563eb, #1e3a5f)" }}
               >
                 ZO
               </div>
-              <h3 className="font-display text-center text-xl font-bold text-stone-800">{PROFILE.name}</h3>
-              <p
-                className="mb-6 text-center text-[10px] font-bold uppercase tracking-[0.28em]"
-                style={{ color: "#C084A0" }}
-              >
-                UX Designer & Developer
+              <h3 className="font-display relative z-10 text-center text-xl font-bold text-white">{PROFILE.name}</h3>
+              <p className="relative z-10 mb-6 text-center text-[10px] font-bold uppercase tracking-[0.28em] text-[#93c5fd]">
+                UX/UI · Front-End · Calgary
               </p>
-              <div className="mb-6 space-y-3">
+              <div className="relative z-10 mb-6 space-y-3">
                 {[
                   { icon: MapPin, text: PROFILE.city },
                   { icon: Mail, text: PROFILE.emailDisplay },
                   { icon: Phone, text: PROFILE.phoneDisplay },
-                  { icon: GraduationCap, text: "SAIT — Grad 2026" },
+                  { icon: GraduationCap, text: "SAIT — Software Dev · 2026" },
                 ].map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex items-center gap-3 text-xs text-stone-600">
-                    <div
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
-                      style={{ background: "rgba(232,180,192,0.18)" }}
-                    >
-                      <Icon size={13} style={{ color: "#C084A0" }} />
+                  <div key={text} className="flex items-center gap-3 text-xs text-slate-300">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1e3a5f]/80">
+                      <Icon size={13} className="text-[#7dd3fc]" />
                     </div>
                     <span className="truncate font-medium">{text}</span>
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-2 border-t border-rose-50 pt-5">
-                {["Figma", "React", "Next.js", "UserInterface"].map((s) => (
+              <div className="relative z-10 flex flex-wrap justify-center gap-2 border-t border-[#93c5fd]/25 pt-5">
+                {["Figma", "React", "Next.js", "WCAG"].map((s) => (
                   <span
                     key={s}
-                    className="cursor-default rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest"
-                    style={{ background: "rgba(192,132,160,0.1)", color: "#C084A0" }}
+                    className="rounded-full border border-[#93c5fd]/30 bg-[#0f172a]/50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#bfdbfe]"
                   >
                     {s}
                   </span>
@@ -220,13 +179,12 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
+        transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
       >
-        <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-stone-400">scroll</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">scroll</span>
         <motion.div
-          className="h-10 w-px origin-top"
-          style={{ background: "linear-gradient(#E8B4C0, transparent)" }}
+          className="h-10 w-px origin-top bg-linear-to-b from-[#2563eb] to-transparent"
           animate={{ scaleY: [0, 1, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         />
