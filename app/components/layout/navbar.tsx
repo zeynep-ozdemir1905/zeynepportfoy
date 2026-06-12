@@ -1,9 +1,9 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FOOTER_NAV, PROFILE, socials } from "@/app/data/portfolio";
+import { FOOTER_NAV, PROFILE, RESUME_PDF, socials } from "@/app/data/portfolio";
 
 const NAV = [
   { id: "intro", label: "Intro", href: "#intro" },
@@ -91,6 +91,16 @@ export function Navbar({ mobileOpen, onToggle }: NavbarProps) {
 
         <div className="flex items-center gap-2">
           <motion.a
+            href={RESUME_PDF.href}
+            download={RESUME_PDF.fileName}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            className="hidden items-center gap-1.5 rounded-full border border-[#93c5fd]/70 bg-white/90 px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1e40af] shadow-sm sm:inline-flex"
+          >
+            <Download size={14} aria-hidden />
+            Resume
+          </motion.a>
+          <motion.a
             href={PROFILE.emailHref}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
@@ -116,6 +126,15 @@ export function Navbar({ mobileOpen, onToggle }: NavbarProps) {
           animate={{ opacity: 1, height: "auto" }}
           className="border-t border-[#93c5fd]/40 bg-white/95 px-5 py-4 backdrop-blur-md md:hidden"
         >
+          <a
+            href={RESUME_PDF.href}
+            download={RESUME_PDF.fileName}
+            onClick={onToggle}
+            className="mb-3 flex items-center justify-center gap-2 rounded-full border border-[#93c5fd]/70 bg-[#f0f7ff] px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#1e40af]"
+          >
+            <Download size={14} aria-hidden />
+            {RESUME_PDF.label}
+          </a>
           <div className="grid grid-cols-2 gap-2">
             {FOOTER_NAV.map((link) => (
               <a

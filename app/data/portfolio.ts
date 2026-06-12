@@ -38,7 +38,7 @@ export const FOOTER_NAV = [
   { label: "Internships", href: "#internships" },
   { label: "Volunteer", href: "#volunteer" },
   { label: "Coffee chat", href: "#contact" },
-  { label: "PDF-style resume", href: "/resume" },
+  { label: "PDF resume", href: "/Zeynep_Ozdemir_Resume.pdf" },
 ];
 
 export const PROFILE = {
@@ -49,6 +49,13 @@ export const PROFILE = {
   emailHref: "mailto:barikazeynep2@gmail.com",
   city: "Calgary, AB",
   openToWork: true,
+};
+
+/** ATS resume PDF served from /public for header download. */
+export const RESUME_PDF = {
+  href: "/Zeynep_Ozdemir_Resume.pdf",
+  fileName: "Zeynep_Ozdemir_Resume.pdf",
+  label: "Download resume",
 };
 
 export const rotatingTitles = [
@@ -100,14 +107,14 @@ export const aboutStats = [
 /** Professional roles shown in Experience (community-only roles stay in VOLUNTEER). */
 export const EXPERIENCE = [
   {
-    date: "May 2026 - Present",
+    date: "Jun 2026 - Present",
     role: "Web Developer Intern",
     company: "Tech Connect Alberta",
     location: "Calgary, AB · Internship",
     bullets: [
       "Built and maintained responsive web pages with HTML, CSS, JavaScript, and React.",
       "Collaborated with the team to improve site performance, usability, and accessibility.",
-      "Designerd websites for clients using Figma and developed them.",
+      "Designed websites for clients using Figma and developed them.",
       "Implemented UI updates from design specs and supported deployment workflows.",
     ],
   },
@@ -122,17 +129,6 @@ export const EXPERIENCE = [
       "Implementing front end for enterprise applications.",
       "Used Tailwind CSS to style the website and implemented it using React and Next.js.",
       "Used TypeScript to type the website and implemented it using React and Next.js.",
-    ],
-  },
-  {
-    date: "Sep 2025 - Present",
-    role: "Marketing Volunteer",
-    company: "Enactus",
-    location: "Calgary, AB",
-    bullets: [
-      "Planned and executed social media campaigns to promote Enactus projects and events.",
-      "Created marketing visuals and content in Canva and Figma for outreach and recruitment.",
-      "Supported team storytelling and brand consistency across digital channels.",
     ],
   },
   {
@@ -194,13 +190,13 @@ export const INTERNSHIPS: Internship[] = [
     ],
   },
   {
-    date: "Jun 2025 - Aug 2025",
-    title: "User Interface Designer (Co-op)",
-    org: "Sky Air Supplies",
+    date: "Jun 2026 - Present",
+    title: "Web Developer Intern",
+    org: "Tech Connect Alberta",
     location: "Calgary, AB",
     highlights: [
-      "Shipped polished UI from concept through developer handoff.",
-      "Partnered on component structure and responsive layouts.",
+      "Built responsive web pages with HTML, CSS, JavaScript, and React.",
+      "Designed client sites in Figma and shipped accessible UI updates.",
     ],
   },
 ];
@@ -213,6 +209,13 @@ export type VolunteerRole = {
 };
 
 export const VOLUNTEER: VolunteerRole[] = [
+  {
+    title: "Marketing Volunteer",
+    org: "Enactus",
+    period: "Sep 2025 - Present",
+    description:
+      "Planned social media campaigns, created visuals in Canva and Figma, and kept brand messaging consistent across outreach and recruitment.",
+  },
   {
     title: "Fundraiser Manager",
     description:
