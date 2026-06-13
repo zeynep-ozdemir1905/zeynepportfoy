@@ -24,7 +24,7 @@ export function InteractiveResumeSection() {
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
           icon={FileText}
-          label="Interactive resume"
+          label="Resume"
           title="Proof points at a glance"
           description="Switch tabs to see stats, education, and skills—built for recruiters who skim in under a minute."
         />

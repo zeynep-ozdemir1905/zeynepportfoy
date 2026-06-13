@@ -180,16 +180,6 @@ export type Internship = {
 
 export const INTERNSHIPS: Internship[] = [
   {
-    date: "Dec 2025 - Present",
-    title: "UX/UI Designer & Developer",
-    org: "MLC",
-    location: "Calgary, AB",
-    highlights: [
-      "Enterprise Figma systems and accessible UI delivery.",
-      "Front-end implementation for operational software.",
-    ],
-  },
-  {
     date: "Jun 2026 - Present",
     title: "Web Developer Intern",
     org: "Tech Connect Alberta",
@@ -199,6 +189,17 @@ export const INTERNSHIPS: Internship[] = [
       "Designed client sites in Figma and shipped accessible UI updates.",
     ],
   },
+  {
+    date: "Feb 2026 - June 2026",
+    title: "UX/UI Designer & Developer",
+    org: "MLC",
+    location: "Calgary, AB",
+    highlights: [
+      "Enterprise Figma systems and accessible UI delivery.",
+      "Front-end implementation for operational software.",
+    ],
+  },
+  
 ];
 
 export type VolunteerRole = {
@@ -211,7 +212,7 @@ export type VolunteerRole = {
 export const VOLUNTEER: VolunteerRole[] = [
   {
     title: "Marketing Volunteer",
-    org: "Enactus",
+    org: "Enactus SAIT",
     period: "Sep 2025 - Present",
     description:
       "Planned social media campaigns, created visuals in Canva and Figma, and kept brand messaging consistent across outreach and recruitment.",
@@ -228,6 +229,8 @@ export const VOLUNTEER: VolunteerRole[] = [
   },
   {
     title: "Graphic Designer",
+    org: "IDI Calgary",
+    period: "Jun 2025 - Present",
     description:
       "Created social and print visuals in Figma and Adobe tools—balanced brand warmth with readable hierarchy.",
   },
@@ -343,6 +346,34 @@ export const projects: Project[] = [
     details:
       "An accessible, user-friendly experience for discovering opportunities, applying, and tracking volunteer progress.",
   },
+  {
+    id: "Closetcove",
+    number: "06",
+    title: "Closetcove",
+    category: "Web Application",
+    description: "A platform for clothe lovers to find and shop clothes. Built for a client. Built with HTML, CSS, JavaScript, and Typescript.",
+    tech: ["UI Design", "Lead Designer", "Front End Development"],
+    accent: "linear-gradient(135deg, #dbeafe 0%, #1e3a5f 35%, #93c5fd 100%)",
+    device: "desktop",
+    live: "https://closetcove.vercel.app/",
+    details:
+      "An accessible, user-friendly experience for finding and shopping clothes.",
+  },
+  {
+    id: "Panghimagas Mo",
+    number: "07",
+    title: "Panghimagas Mo",
+    category: "Web Application",
+    description: "A web application for Phlippine food lovers to find and shop food. Built for a client. Built with HTML, CSS, JavaScript, and Typescript.",
+    tech: ["UI Design", "Lead Designer", "Front End Development"],
+    accent: "linear-gradient(135deg, #dbeafe 0%, #1e3a5f 35%, #93c5fd 100%)",
+    device: "desktop",
+    live: "https://panghimas-mo.vercel.app/",
+    details:
+      "An accessible, user-friendly experience for finding and shopping food from local Philippine bakery.",
+  },
+
+
 ];
 
 export const socials = [
