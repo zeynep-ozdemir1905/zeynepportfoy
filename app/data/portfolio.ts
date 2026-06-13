@@ -30,6 +30,89 @@ export function projectEmbedSrc(project: Project) {
   return undefined;
 }
 
+export type UiDesign = {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  tags: string[];
+  accent: string;
+  device: DevicePreview;
+  /** Figma embed URL — Share → Embed → copy iframe src (embed.figma.com/...) */
+  figma: string;
+  /** Optional link to open the file in Figma */
+  figmaLink?: string;
+  prototype?: string;
+  details?: string;
+};
+
+/** Add designs here — paste your Figma embed URL into `figma`. */
+export const UI_DESIGNS: UiDesign[] = [
+  {
+    id: "go-apricot-ui",
+    number: "01",
+    title: "Go Apricot",
+    description: "Mobile workforce check-in flows — wireframes through high-fidelity UI.",
+    tags: ["Mobile", "UX Research", "Prototyping"],
+    accent: "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
+    device: "mobile",
+    figma:
+      "https://embed.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee?node-id=0-1&embed-host=share",
+    figmaLink: "https://www.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee",
+    details: "Capstone mobile UI exploring industrial check-in workflows with clear hierarchy and touch targets.",
+  },
+  {
+    id: "calgary-gift-card-ui",
+    number: "02",
+    title: "Calgary Gift Card App",
+    description: "Gift-card onboarding and purchase flows with a warm, approachable visual system.",
+    tags: ["Mobile", "UI Design", "Wireframes"],
+    accent: "linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%)",
+    device: "mobile",
+    figma:
+      "https://embed.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep?node-id=0-1&embed-host=share",
+    figmaLink: "https://www.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep",
+    details: "Wireframes and polished screens focused on gifting interactions and readable mobile layouts.",
+  },
+  {
+    id: "mlc-dashboard-ui",
+    number: "03",
+    title: "MLC Enterprise Dashboard",
+    description: "Industrial dashboard UI with data clarity and accessibility-first layout decisions.",
+    tags: ["Web", "Design System", "Data UI"],
+    accent: "linear-gradient(135deg, #e0f2fe 0%, #93c5fd 100%)",
+    device: "desktop",
+    figma:
+      "https://embed.figma.com/design/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&embed-host=share",
+    figmaLink: "https://www.figma.com/design/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense",
+    prototype:
+      "https://www.figma.com/proto/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&t=U6d9Nk78Tav6tFYn-1",
+    details: "Enterprise dashboard concept with data clarity and accessibility-first layout decisions.",
+  },
+  {
+    id: "laise-ui",
+    number: "04",
+    title: "Laise",
+    description: "UI design for Laise — polished layouts with clear hierarchy and a cohesive visual system.",
+    tags: ["Web", "UI Design", "Figma"],
+    accent: "linear-gradient(135deg, #ede9fe 0%, #c4b5fd 100%)",
+    device: "desktop",
+    figma:
+      "https://embed.figma.com/design/QyqmbgUfTTaXKFIdnxtDdw/Laise-Farjeen?node-id=1-2&embed-host=share",
+    figmaLink: "https://www.figma.com/design/QyqmbgUfTTaXKFIdnxtDdw/Laise-Farjeen",
+    details: "High-fidelity UI screens for Laise with thoughtful spacing, typography, and component structure.",
+  },
+];
+
+export function uiDesignEmbedSrc(design: UiDesign) {
+  if (design.figma && !design.figma.includes("/proto/")) return design.figma;
+  return undefined;
+}
+
+export function uiDesignPreviewLink(design: UiDesign) {
+  return design.prototype ?? design.figmaLink ?? (design.figma || undefined);
+}
+
 /** In-page anchors for footer / secondary navigation (header is minimal). */
 export const FOOTER_NAV = [
   { label: "Resume", href: "#resume" },
