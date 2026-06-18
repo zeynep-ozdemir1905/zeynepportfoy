@@ -202,7 +202,7 @@ export const EXPERIENCE = [
     ],
   },
   {
-    date: "Feb 2026 - Present",
+    date: "Feb 2026 - Jun 2026",
     role: "UX/UI Designer & Developer",
     company: "MLC",
     location: "Calgary, AB · Internship",
@@ -238,19 +238,6 @@ export const EXPERIENCE = [
       "Collaborated with developers on component handoff and design systems.",
     ],
   },
-  {
-    date: "Dec 2025 - Feb 2026",
-    role: "User Interface Designer & Developer",
-    company: "Drill Sense",
-    location: "Calgary, AB · Internship",
-    bullets: [
-      "Designed and developed a responsive website for the Calgary Public Library.",
-      "Collaborated with the library's team to improve the website's usability and accessibility.",
-      "Used Figma to design the website and implemented it using React and Next.js.",
-      "Did user research and testing to improve the website's usability and accessibility.",
-      "Designed high-fidelity user interfaces and brought them to life."
-    ],
-  },
 ];
 
 export type Internship = {
@@ -273,7 +260,7 @@ export const INTERNSHIPS: Internship[] = [
     ],
   },
   {
-    date: "Feb 2026 - June 2026",
+    date: "Feb 2026 - Jun 2026",
     title: "UX/UI Designer & Developer",
     org: "MLC",
     location: "Calgary, AB",

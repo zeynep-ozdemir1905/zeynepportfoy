@@ -21,19 +21,6 @@ const skills = {
 
 const experience = [
   {
-    role: "UX/UI Designer & Front-End Developer",
-    company: "Drill Sense",
-    period: "2024 - Present",
-    location: "Calgary, AB",
-    bullets: [
-      "Designed and implemented reusable, responsive UI components using Next.js, TypeScript, HTML, and CSS with user-centered accessibility standards.",
-      "Translated Figma prototypes into production-ready interfaces, bridging design and engineering in agile delivery.",
-      "Participated in iterative development cycles, code review, and documentation to support team quality.",
-      "Conducted user research and integrated feedback to improve usability and release quality.",
-      "Collaborated with cross-functional teammates to communicate scope, surface risks, and deliver on schedule.",
-    ],
-  },
-  {
     role: "UX/UI Designer & Web Developer",
     company: "Sky Air Supply Ltd.",
     period: "2023 - 2024",
@@ -45,15 +32,14 @@ const experience = [
     ],
   },
   {
-    role: "Intern Web Designer & Developer",
-    company: "MLC Subsea Navigation",
-    period: "2026 (Contract)",
+    role: "UX/UI Designer & Developer",
+    company: "MLC",
+    period: "Feb 2026 - Jun 2026",
     location: "Calgary, AB",
     bullets: [
-      "Designed and developed a full business website independently from discovery to deployment.",
-      "Built a responsive multi-page site using Vite, JavaScript, and Tailwind CSS.",
-      "Used Claude AI to accelerate content generation and design iteration.",
-      "Delivered production-ready pages with consistent branding, hierarchy, and navigation.",
+      "Created Figma designs for enterprise applications and implemented front-end features with React and Next.js.",
+      "Led transitions to improve software responsiveness using Tailwind CSS and TypeScript.",
+      "Collaborated on accessible UI delivery for operational software.",
     ],
   },
   {
@@ -66,18 +52,6 @@ const experience = [
       "Created campaign visuals in Figma and Adobe XD for events and communications.",
       "Maintained WordPress content and improved site performance, SEO, and usability.",
       "Tracked analytics and used data-driven insights to improve content strategy.",
-    ],
-  },
-  {
-    role: "UI Designer (Intern)",
-    company: "Drill Sense",
-    period: "2025-2026 January",
-    location: "Calgary, AB",
-    bullets: [
-      "Designed high-fidelity UI mockups and prototypes in Figma.",
-      "Created campaign visuals in Figma and Adobe XD for events and communications.",
-      "Designed user interfaces that prioritize usability and accessibility.",
-      "Tracked analytics and used data-driven insights to improve user experience.",
     ],
   },
 
