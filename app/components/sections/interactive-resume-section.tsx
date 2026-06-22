@@ -1,9 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText } from "lucide-react";
+import { Download, FileText } from "lucide-react";
 import { useState } from "react";
-import { EDUCATION, SKILL_GROUPS, aboutStats } from "@/app/data/portfolio";
+import { EDUCATION, RESUME_PDF, RESUME_SUMMARY, SKILL_GROUPS, aboutStats } from "@/app/data/portfolio";
 import { SectionHeader } from "@/app/components/ui/section-header";
 import { SectionReveal } from "@/app/components/ui/section-reveal";
 import { easeOut } from "@/app/lib/motion";
@@ -26,8 +26,19 @@ export function InteractiveResumeSection() {
           icon={FileText}
           label="Resume"
           title="Proof points at a glance"
-          description="Switch tabs to see stats, education, and skills—built for recruiters who skim in under a minute."
+          description="Aligned with my ATS resume—switch tabs for summary, education, and skills, or download the full PDF."
         />
+
+        <SectionReveal delay={0.04} className="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={RESUME_PDF.href}
+            download={RESUME_PDF.fileName}
+            className="inline-flex items-center gap-2 rounded-full border border-[#93c5fd]/70 bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-[#1e40af] shadow-sm transition hover:border-[#2563eb] hover:text-[#2563eb]"
+          >
+            <Download size={14} aria-hidden />
+            {RESUME_PDF.label}
+          </a>
+        </SectionReveal>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[220px_1fr]">
           <SectionReveal delay={0.05} className="flex flex-wrap gap-2 lg:flex-col">
@@ -60,19 +71,24 @@ export function InteractiveResumeSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -16 }}
                   transition={{ duration: 0.3, ease: easeOut }}
-                  className="relative grid gap-4 sm:grid-cols-2"
+                  className="relative space-y-6"
                 >
-                  {aboutStats.map((stat) => (
-                    <motion.button
-                      key={stat.label}
-                      type="button"
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      className="rounded-2xl border border-[#bfdbfe] bg-[#f0f7ff] p-5 text-left"
-                    >
-                      <p className="text-2xl font-bold text-[#1e40af]">{stat.value}</p>
-                      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{stat.label}</p>
-                    </motion.button>
-                  ))}
+                  <div className="rounded-2xl border border-[#bfdbfe] bg-[#f0f7ff] p-5">
+                    <p className="eyebrow">Professional summary</p>
+                    <p className="mt-3 text-sm font-light leading-relaxed text-slate-600">{RESUME_SUMMARY}</p>
+                  </div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {aboutStats.map((stat) => (
+                      <motion.div
+                        key={stat.label}
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        className="rounded-2xl border border-[#bfdbfe] bg-[#f0f7ff] p-5 text-left"
+                      >
+                        <p className="text-2xl font-bold text-[#1e40af]">{stat.value}</p>
+                        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{stat.label}</p>
+                      </motion.div>
+                    ))}
+                  </div>
                 </motion.div>
               ) : null}
 
@@ -93,6 +109,7 @@ export function InteractiveResumeSection() {
                       <summary className="cursor-pointer list-none font-semibold text-[#0f172a] marker:hidden [&::-webkit-details-marker]:hidden">
                         {edu.degree}
                       </summary>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{edu.date}</p>
                       <p className="mt-3 text-sm font-medium text-[#2563eb]">{edu.school}</p>
                       <p className="mt-3 text-sm text-slate-600">{edu.note}</p>
                     </details>

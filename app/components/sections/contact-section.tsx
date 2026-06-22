@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, Send } from "lucide-react";
 import { PROFILE, socials } from "@/app/data/portfolio";
+import { LinkedInBadge } from "@/app/components/ui/linkedin-badge";
 import { MagneticButton } from "@/app/components/ui/magnetic-button";
 import { SectionHeader } from "@/app/components/ui/section-header";
 import { SectionReveal } from "@/app/components/ui/section-reveal";
@@ -38,6 +39,10 @@ export function ContactSection() {
                 {social.label}
               </motion.a>
             ))}
+          </div>
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[#bfdbfe] bg-[#0f172a] p-4">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">LinkedIn</p>
+            <LinkedInBadge />
           </div>
         </SectionReveal>
 

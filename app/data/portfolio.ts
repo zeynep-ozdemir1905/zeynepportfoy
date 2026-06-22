@@ -142,20 +142,24 @@ export const RESUME_PDF = {
 };
 
 export const rotatingTitles = [
-  "UX/UI Designer",
-  "Front-End Developer",
-  "Product-minded Engineer",
+  "Junior Frontend Developer",
+  "UI/UX Designer",
+  "Web Designer",
 ];
 
 /** Hero — recruiter-first messaging */
 export const HERO_COPY = {
-  badge: "Open to full-time · Co-op · Contract",
-  headline: "I ship accessible interfaces that teams can hire with confidence.",
+  badge: "Open to full-time · Co-op · Contract · Calgary",
+  headline: "I deliver accessible, responsive digital products—from Figma concept to production deployment.",
   subline:
-    "Calgary-based UX/UI designer and front-end developer. I translate Figma into production React/Next.js, care about WCAG, and communicate clearly with engineers and stakeholders.",
+    "Frontend developer and UI/UX designer with hands-on experience across web and mobile. I own projects end-to-end with React, Next.js, and TypeScript, and collaborate effectively in agile, cross-functional teams.",
   primaryCta: "See my work",
   secondaryCta: "Schedule a conversation",
 };
+
+/** Professional summary — mirrors ATS resume */
+export const RESUME_SUMMARY =
+  "Frontend Developer and UI/UX Designer with hands-on experience delivering accessible, responsive digital products across web and mobile platforms. Proven ability to own projects end-to-end—from Figma design concepting through production deployment using React, Next.js, and TypeScript. Equally effective working independently on client-facing builds and as a collaborative contributor within agile teams.";
 
 /** Skills ticker (marquee strip). */
 export const MARQUEE_ITEMS = [
@@ -181,61 +185,46 @@ export const MARQUEE_ITEMS = [
 ] as const;
 
 export const aboutStats = [
-  { label: "Projects Shipped", value: "5+" },
-  { label: "Industry Roles", value: "3" },
-  { label: "Accessibility", value: "User-Centered" },
-  { label: "Grad Year", value: "2026" },
+  { label: "Projects Shipped", value: "4+" },
+  { label: "Industry Roles", value: "5" },
+  { label: "Accessibility", value: "WCAG" },
+  { label: "Diploma", value: "2026" },
 ];
 
 /** Professional roles shown in Experience (community-only roles stay in VOLUNTEER). */
 export const EXPERIENCE = [
   {
-    date: "Jun 2026 - Present",
-    role: "Web Developer Intern",
+    date: "Jun 2026 - Jul 2026",
+    role: "Web Developer & Web Designer",
     company: "Tech Connect Alberta",
-    location: "Calgary, AB · Internship",
+    location: "Calgary, AB · Contract / Summer Internship",
     bullets: [
-      "Built and maintained responsive web pages with HTML, CSS, JavaScript, and React.",
-      "Collaborated with the team to improve site performance, usability, and accessibility.",
-      "Designed websites for clients using Figma and developed them.",
-      "Implemented UI updates from design specs and supported deployment workflows.",
+      "Sole designer and developer on end-to-end website builds for startup clients—from discovery and research through delivery and handoff.",
+      "Engineered fully responsive, multi-page websites using HTML, CSS3, JavaScript, and Tailwind CSS with consistent cross-device rendering.",
+      "Collaborated with developers and stakeholders to translate business requirements into cohesive UI designs and manage iterative client feedback.",
     ],
   },
   {
-    date: "Feb 2026 - Jun 2026",
-    role: "UX/UI Designer & Developer",
-    company: "MLC",
-    location: "Calgary, AB · Internship",
+    date: "Apr 2026 - Jun 2026",
+    role: "Web Designer & Frontend Developer",
+    company: "MLC Subsea Navigation",
+    location: "Calgary, AB · Contract / Internship",
     bullets: [
-      "Creating Figma designs for enterprise applications.",
-      "Leading transitions to improve software responsiveness.",
-      "Implementing front end for enterprise applications.",
-      "Used Tailwind CSS to style the website and implemented it using React and Next.js.",
-      "Used TypeScript to type the website and implemented it using React and Next.js.",
+      "Sole owner of a complete digital brand website for an international marine and subsea services company—from discovery through deployment.",
+      "Engineered a fully responsive, multi-page website using Vite, JavaScript, and Tailwind CSS with fast load performance.",
+      "Developed a cohesive visual identity system encompassing typography, colour palette, and layout grid across all pages.",
+      "Leveraged Claude AI to accelerate content development and design iteration while maintaining high output quality.",
     ],
   },
   {
-    date: "Jun 2025 - Present",
-    role: "Website & Engagement Manager",
-    company: "IDI Calgary",
-    location: "Calgary, AB",
+    date: "Jul 2025 - Aug 2025",
+    role: "Front End Designer & Web Developer",
+    company: "Sky Air Supply Ltd.",
+    location: "Calgary, AB · Co-op",
     bullets: [
-      "Modernizing digital presence through WordPress optimization.",
-      "Community-focused content strategy and UX improvements.",
-      "Managed Instagram, Facebook, and YouTube content to increase engagement and brand visibility.",
-      "Created campaign visuals in Figma and Adobe XD for events and communications.",
-      "Maintained WordPress content and improved site performance, SEO, and usability.",
-      "Used Canva to create campaign visuals and social media content.",
-    ],
-  },
-  {
-    date: "Jun 2025 - Aug 2025",
-    role: "User Interface Designer",
-    company: "Sky Air Supplies",
-    location: "Calgary, AB · CO-OP",
-    bullets: [
-      "Designed high-fidelity user interfaces and brought them to life.",
-      "Collaborated with developers on component handoff and design systems.",
+      "Led frontend design and development of responsive, cross-device web experiences using HTML, CSS, and JavaScript.",
+      "Drove an iterative UI design process in Figma and Adobe XD, from wireframes through developer-ready prototypes.",
+      "Administered and optimized CMS-based content workflows, maintaining brand consistency across published pages.",
     ],
   },
 ];
@@ -250,26 +239,25 @@ export type Internship = {
 
 export const INTERNSHIPS: Internship[] = [
   {
-    date: "Jun 2026 - Present",
-    title: "Web Developer Intern",
+    date: "Jun 2026 - Jul 2026",
+    title: "Web Developer & Web Designer",
     org: "Tech Connect Alberta",
     location: "Calgary, AB",
     highlights: [
-      "Built responsive web pages with HTML, CSS, JavaScript, and React.",
-      "Designed client sites in Figma and shipped accessible UI updates.",
+      "End-to-end client website builds from discovery through delivery and handoff.",
+      "Responsive multi-page sites with HTML, CSS3, JavaScript, and Tailwind CSS.",
     ],
   },
   {
-    date: "Feb 2026 - Jun 2026",
-    title: "UX/UI Designer & Developer",
-    org: "MLC",
+    date: "Apr 2026 - Jun 2026",
+    title: "Web Designer & Frontend Developer",
+    org: "MLC Subsea Navigation",
     location: "Calgary, AB",
     highlights: [
-      "Enterprise Figma systems and accessible UI delivery.",
-      "Front-end implementation for operational software.",
+      "Complete brand website with Vite, JavaScript, and Tailwind CSS.",
+      "Visual identity system and premium cross-device brand presence.",
     ],
   },
-  
 ];
 
 export type VolunteerRole = {
@@ -281,11 +269,18 @@ export type VolunteerRole = {
 
 export const VOLUNTEER: VolunteerRole[] = [
   {
-    title: "Marketing Volunteer",
+    title: "Marketing & Designer",
     org: "Enactus SAIT",
-    period: "Sep 2025 - Present",
+    period: "Jun 2026 - Present",
     description:
-      "Planned social media campaigns, created visuals in Canva and Figma, and kept brand messaging consistent across outreach and recruitment.",
+      "Designed social media graphics and promotional content in Canva and Figma. Produced on-brand campaign assets and used AI tools to streamline content workflows for club outreach.",
+  },
+  {
+    title: "Social Media & Digital Marketing Manager",
+    org: "IDI Calgary",
+    period: "2022 - Present",
+    description:
+      "Directed digital presence across Instagram, Facebook, and YouTube. Produced branded graphics in Figma and Adobe XD, managed WordPress with SEO improvements, and used monthly metrics to improve reach and engagement.",
   },
   {
     title: "Fundraiser Manager",
@@ -298,13 +293,6 @@ export const VOLUNTEER: VolunteerRole[] = [
       "Supported event logistics, outreach, and donation tracking so teams could focus on community impact.",
   },
   {
-    title: "Graphic Designer",
-    org: "IDI Calgary",
-    period: "Jun 2025 - Present",
-    description:
-      "Created social and print visuals in Figma and Adobe tools—balanced brand warmth with readable hierarchy.",
-  },
-  {
     title: "Math Tutor",
     description:
       "Explained concepts patiently, built confidence, and adapted examples to how each student learns best.",
@@ -313,33 +301,41 @@ export const VOLUNTEER: VolunteerRole[] = [
 
 export const EDUCATION = [
   {
-    date: "2024 - 2026",
-    degree: "Diploma - Information Technology: Software Development",
-    school: "SAIT (Southern Alberta Institute of Technology)",
+    date: "Expected Apr 2028",
+    degree: "Bachelor of Information Technology — Software Development",
+    school: "Southern Alberta Institute of Technology (SAIT)",
     location: "Calgary, AB",
-    note: "Focus on UX/UI Design, React, and Accessible Web Development",
+    note: "Continuing degree pathway following diploma completion.",
   },
   {
-    date: "2024 - 2028",
-    degree: "Bachelors - Information Technology: Software Development",
-    school: "SAIT (Southern Alberta Institute of Technology)",
+    date: "Completed Apr 2026",
+    degree: "Diploma — Information Technology, Software Development",
+    school: "Southern Alberta Institute of Technology (SAIT)",
     location: "Calgary, AB",
-    note: "Focus on UX/UI Design, React, and Accessible Web Development",
+    note: "Focus on UX/UI design, React, and accessible web development.",
   },
 ];
 
 export const SKILL_GROUPS = [
   {
-    group: "Design",
-    items: ["Figma", "Prototyping", "UX Research", "Adobe Photoshop", "Motion Design"],
+    group: "Languages",
+    items: ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3"],
   },
   {
-    group: "Frontend",
-    items: ["React", "Next.js", "React Native & Expo", "Tailwind CSS", "TypeScript", "HTML"],
+    group: "Frameworks",
+    items: ["React", "React Native (Expo)", "Next.js", "Tailwind CSS"],
   },
   {
-    group: "Tools",
-    items: ["Azure", "Node.js", "WordPress", "Git"],
+    group: "Design & UX",
+    items: ["Figma", "Adobe XD", "Responsive Design", "Accessibility (WCAG)", "Canva"],
+  },
+  {
+    group: "CMS & Marketing",
+    items: ["WordPress", "SEO", "Social Media Management", "Google Analytics"],
+  },
+  {
+    group: "Tools & Practices",
+    items: ["Git", "GitHub", "Vite", "Claude AI", "Cursor", "Agile/Scrum", "Code Review", "Front-End DevOps"],
   },
 ];
 
@@ -350,29 +346,29 @@ export const projects: Project[] = [
     title: "Go Apricot",
     category: "Mobile Application",
     description:
-      "Workforce management system for industrial employee check-ins.",
-    tech: ["React Expo", "Azure", "UI Design"],
+      "Cross-platform mobile app for industrial workforce check-ins — lead designer and developer.",
+    tech: ["React Native (Expo)", "TypeScript", "Tailwind CSS", "Figma"],
     accent: "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
     device: "mobile",
     figma:
       "https://embed.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee?node-id=0-1&embed-host=share",
     details:
-      "Designed to bridge complex industrial workflows with intuitive mobile experiences for operational teams.",
+      "Spearheaded end-to-end design and development from concept through App Store-ready build. Designed interactive Figma prototypes, ran user testing, and led Git workflow and code reviews.",
   },
   {
     id: "mlc",
     number: "02",
-    title: "MLC",
+    title: "MLC Subsea Navigation",
     category: "Web Application",
     description:
-      "Enterprise accessibility dashboard for oilfield operators.",
-    tech: ["React", "Figma", "Data Visualization"],
+      "Professional multi-page website for a marine services client — frontend developer and UI researcher.",
+    tech: ["Vite", "JavaScript", "Tailwind CSS", "Figma"],
     accent: "linear-gradient(135deg, #e0f2fe 0%, #93c5fd 100%)",
     device: "desktop",
     prototype:
       "https://www.figma.com/proto/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&t=U6d9Nk78Tav6tFYn-1",
     details:
-      "Built with accessibility-first principles and structured data clarity for real-world industrial decision-making.",
+      "Designed and built a polished, fully responsive product with cohesive visual identity and structured layouts for a premium client-facing brand presence.",
   },
   {
     id: "calgary-gift-card-app",
@@ -392,16 +388,16 @@ export const projects: Project[] = [
   {
     id: "apply-alberta",
     number: "04",
-    title: "Apply Alberta",
+    title: "Apply Alberta (Campus Navigator)",
     category: "Web Application",
     description:
-      "Platform for Alberta students and academic guidance.",
-    tech: ["UI Design", "Lead Designer", "Front End Development"],
+      "Student guidance platform — lead designer and front-end developer.",
+    tech: ["TypeScript", "React Native", "UI Design"],
     accent: "linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%)",
     device: "desktop",
     live: "https://campus-navigator-seven.vercel.app/",
     details:
-      "Focused on clarity, student-first navigation, and an approachable information architecture for guidance journeys.",
+      "Engineered a mobile application with intuitive navigation and performance across device sizes. Contributed to sprint planning, feature scoping, and collaborative debugging within an agile team.",
   },
   {
     id: "voluntr",
@@ -442,12 +438,35 @@ export const projects: Project[] = [
     details:
       "An accessible, user-friendly experience for finding and shopping food from local Philippine bakery.",
   },
+  {
+    id: "lockin-ai",
+    number: "08",
+    title: "LockIn AI",
+    category: "Web Application",
+    description:
+      "Gamified focus web app — Hackathon Community Choice Award winner.",
+    tech: ["UI Design", "Front-End Development", "Hackathon"],
+    accent: "linear-gradient(135deg, #ecfdf5 0%, #6ee7b7 100%)",
+    device: "desktop",
+    details:
+      "Built a gamified focus app with timed study sessions and distraction control. Completed sessions grow a virtual garden and a companion character reacts to user progress.",
+  },
 
 
 ];
 
 export const socials = [
   { label: "GitHub", href: "https://github.com/zeynep-ozdemir1905" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/zeynep-ozdemir-396010335/" },
+  { label: "LinkedIn", href: "https://ca.linkedin.com/in/zeynep-ozdemir-yyc" },
   { label: "Email", href: "mailto:barikazeynep2@gmail.com" },
 ];
+
+/** Official LinkedIn profile badge — https://www.linkedin.com/badges/profile/create */
+export const LINKEDIN_BADGE = {
+  vanity: "zeynep-ozdemir-yyc",
+  href: "https://ca.linkedin.com/in/zeynep-ozdemir-yyc?trk=profile-badge",
+  locale: "en_US",
+  size: "medium" as const,
+  theme: "dark" as const,
+  type: "VERTICAL" as const,
+};
