@@ -20,39 +20,36 @@ export function InteractiveResumeSection() {
   const [active, setActive] = useState<TabId>("overview");
 
   return (
-    <section id="resume" className="scroll-mt-28 px-6 py-24">
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="resume" className="section-alt scroll-mt-28 px-6 py-28 md:py-32">
+      <div className="mx-auto w-full max-w-7xl">
         <SectionHeader
           icon={FileText}
           label="Resume"
           title="Proof points at a glance"
           description="Aligned with my ATS resume—switch tabs for summary, education, and skills, or download the full PDF."
+          large
         />
 
-        <SectionReveal delay={0.04} className="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href={RESUME_PDF.href}
-            download={RESUME_PDF.fileName}
-            className="inline-flex items-center gap-2 rounded-full border border-[#93c5fd]/70 bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-[#1e40af] shadow-sm transition hover:border-[#2563eb] hover:text-[#2563eb]"
-          >
-            <Download size={14} aria-hidden />
+        <SectionReveal delay={0.04} className="mt-8">
+          <a href={RESUME_PDF.href} download={RESUME_PDF.fileName} className="btn-secondary inline-flex">
+            <Download size={16} aria-hidden />
             {RESUME_PDF.label}
           </a>
         </SectionReveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[220px_1fr]">
-          <SectionReveal delay={0.05} className="flex flex-wrap gap-2 lg:flex-col">
+        <div className="mt-14 grid gap-10 lg:grid-cols-[200px_1fr] lg:gap-16">
+          <SectionReveal delay={0.05} className="flex flex-row flex-wrap gap-2 lg:flex-col">
             {tabs.map((tab) => (
               <motion.button
                 key={tab.id}
                 type="button"
                 onClick={() => setActive(tab.id)}
-                whileHover={{ x: 4 }}
+                whileHover={{ x: 3 }}
                 whileTap={{ scale: 0.98 }}
-                className={`rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition lg:w-full ${
+                className={`rounded-lg px-4 py-3 text-left text-sm font-medium transition lg:w-full ${
                   active === tab.id
-                    ? "border-[#2563eb]/40 bg-[#dbeafe] text-[#1e40af] shadow-md shadow-blue-200/30"
-                    : "border-[#bfdbfe] bg-white/90 text-slate-500 hover:border-[#93c5fd]"
+                    ? "bg-[var(--ink)] text-white"
+                    : "text-[var(--ink-soft)] hover:text-[var(--ink)]"
                 }`}
               >
                 {tab.label}
@@ -60,33 +57,27 @@ export function InteractiveResumeSection() {
             ))}
           </SectionReveal>
 
-          <SectionReveal delay={0.1} className="glass-card relative min-h-[280px] overflow-hidden p-8">
-            <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-[#93c5fd]/25 blur-3xl" />
-
+          <SectionReveal delay={0.1} className="relative min-h-[280px] border-t border-[var(--line)] pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
             <AnimatePresence mode="wait">
               {active === "overview" ? (
                 <motion.div
                   key="overview"
-                  initial={{ opacity: 0, x: 16 }}
+                  initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
+                  exit={{ opacity: 0, x: -12 }}
                   transition={{ duration: 0.3, ease: easeOut }}
-                  className="relative space-y-6"
+                  className="space-y-8"
                 >
-                  <div className="rounded-2xl border border-[#bfdbfe] bg-[#f0f7ff] p-5">
+                  <div>
                     <p className="eyebrow">Professional summary</p>
-                    <p className="mt-3 text-sm font-light leading-relaxed text-slate-600">{RESUME_SUMMARY}</p>
+                    <p className="mt-4 text-base leading-relaxed text-[var(--ink-muted)]">{RESUME_SUMMARY}</p>
                   </div>
-                  <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="grid gap-8 sm:grid-cols-2">
                     {aboutStats.map((stat) => (
-                      <motion.div
-                        key={stat.label}
-                        whileHover={{ scale: 1.02, y: -2 }}
-                        className="rounded-2xl border border-[#bfdbfe] bg-[#f0f7ff] p-5 text-left"
-                      >
-                        <p className="text-2xl font-bold text-[#1e40af]">{stat.value}</p>
-                        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{stat.label}</p>
-                      </motion.div>
+                      <div key={stat.label}>
+                        <p className="font-display text-3xl font-bold text-[var(--ink)]">{stat.value}</p>
+                        <p className="mt-2 text-sm text-[var(--ink-soft)]">{stat.label}</p>
+                      </div>
                     ))}
                   </div>
                 </motion.div>
@@ -95,24 +86,19 @@ export function InteractiveResumeSection() {
               {active === "education" ? (
                 <motion.div
                   key="education"
-                  initial={{ opacity: 0, x: 16 }}
+                  initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
+                  exit={{ opacity: 0, x: -12 }}
                   transition={{ duration: 0.3, ease: easeOut }}
-                  className="relative space-y-4"
+                  className="space-y-8"
                 >
                   {EDUCATION.map((edu) => (
-                    <details
-                      key={edu.degree}
-                      className="group rounded-2xl border border-[#bfdbfe] bg-[#f0f7ff] p-5 open:border-[#2563eb]/40 open:bg-[#dbeafe]/50"
-                    >
-                      <summary className="cursor-pointer list-none font-semibold text-[#0f172a] marker:hidden [&::-webkit-details-marker]:hidden">
-                        {edu.degree}
-                      </summary>
-                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{edu.date}</p>
-                      <p className="mt-3 text-sm font-medium text-[#2563eb]">{edu.school}</p>
-                      <p className="mt-3 text-sm text-slate-600">{edu.note}</p>
-                    </details>
+                    <div key={edu.degree} className="border-b border-[var(--line)] pb-8 last:border-0 last:pb-0">
+                      <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--ink-soft)]">{edu.date}</p>
+                      <h4 className="mt-2 text-lg font-semibold text-[var(--ink)]">{edu.degree}</h4>
+                      <p className="mt-2 text-sm text-[var(--accent-bright)]">{edu.school}</p>
+                      <p className="mt-3 text-sm leading-relaxed text-[var(--ink-muted)]">{edu.note}</p>
+                    </div>
                   ))}
                 </motion.div>
               ) : null}
@@ -120,21 +106,18 @@ export function InteractiveResumeSection() {
               {active === "skills" ? (
                 <motion.div
                   key="skills"
-                  initial={{ opacity: 0, x: 16 }}
+                  initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
+                  exit={{ opacity: 0, x: -12 }}
                   transition={{ duration: 0.3, ease: easeOut }}
-                  className="relative space-y-6"
+                  className="space-y-8"
                 >
                   {SKILL_GROUPS.map((g) => (
                     <div key={g.group}>
                       <p className="eyebrow">{g.group}</p>
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <div className="mt-4 flex flex-wrap gap-2">
                         {g.items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full border border-[#bfdbfe] bg-white px-3 py-1 text-xs font-medium text-slate-700"
-                          >
+                          <span key={item} className="tag-minimal">
                             {item}
                           </span>
                         ))}

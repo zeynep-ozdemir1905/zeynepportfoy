@@ -8,16 +8,17 @@ import { SectionReveal } from "@/app/components/ui/section-reveal";
 
 export function AboutSection() {
   return (
-    <section id="about" className="section-alt scroll-mt-28 px-6 py-24">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <SectionReveal className="glass-card p-8">
+    <section id="about" className="scroll-mt-28 border-t border-[var(--line)] px-6 py-28 md:py-32">
+      <div className="mx-auto grid w-full max-w-7xl gap-16 lg:grid-cols-[1fr_1fr] lg:gap-24">
+        <SectionReveal>
           <SectionHeader
-            label="About me"
+            label="About"
             title="Design systems thinker who ships on the front end"
-            description="I bridge Figma and code—so hiring managers get one person who owns clarity, accessibility, and polished UI delivery."
+            description="I bridge Figma and code—owning clarity, accessibility, and polished UI delivery for teams that need one person from concept to production."
             icon={User}
+            large
           />
-          <div className="mt-8 grid grid-cols-2 gap-3">
+          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-[var(--line)] pt-10">
             {aboutStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -25,45 +26,46 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                whileHover={{ y: -3 }}
-                className="rounded-xl border border-[#bfdbfe]/80 bg-[#f0f7ff] p-4"
               >
-                <p className="text-2xl font-bold text-[#1e40af]">{stat.value}</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{stat.label}</p>
+                <p className="font-display text-3xl font-bold text-[var(--ink)] md:text-4xl">{stat.value}</p>
+                <p className="mt-2 text-sm text-[var(--ink-soft)]">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </SectionReveal>
-        <SectionReveal delay={0.08} className="glass-card p-8">
+
+        <SectionReveal delay={0.08}>
           <p className="eyebrow">Work timeline</p>
-          <div className="mt-6 space-y-6">
+          <div className="mt-8 space-y-8">
             {EXPERIENCE.map((item, index) => (
               <motion.div
                 key={`${item.role}-${index}`}
-                initial={{ opacity: 0, x: 16 }}
+                initial={{ opacity: 0, x: 12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.07 }}
-                className="relative border-l-2 border-[#93c5fd] pl-6"
+                transition={{ delay: index * 0.06 }}
+                className="group border-b border-[var(--line)] pb-8 last:border-0 last:pb-0"
               >
-                <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-[#2563eb]" />
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{item.date}</p>
-                <h3 className="mt-1 font-semibold text-[#0f172a]">{item.role}</h3>
-                <p className="text-sm font-medium text-[#2563eb]">
+                <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--ink-soft)]">{item.date}</p>
+                <h3 className="mt-2 text-lg font-semibold text-[var(--ink)] transition-colors group-hover:text-[var(--accent-bright)]">
+                  {item.role}
+                </h3>
+                <p className="mt-1 text-sm text-[var(--ink-muted)]">
                   {item.company} · {item.location}
                 </p>
               </motion.div>
             ))}
           </div>
-          <div className="mt-10">
+
+          <div className="mt-14 border-t border-[var(--line)] pt-10">
             <p className="eyebrow">Education</p>
-            <div className="mt-4 grid gap-3">
+            <div className="mt-6 space-y-6">
               {EDUCATION.map((edu) => (
-                <div key={edu.degree} className="rounded-xl border border-[#bfdbfe]/80 bg-[#f0f7ff] p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">{edu.date}</p>
-                  <h4 className="mt-1 text-sm font-semibold text-[#0f172a]">{edu.degree}</h4>
-                  <p className="text-sm text-[#2563eb]">{edu.school}</p>
-                  <p className="mt-2 text-sm text-slate-600">{edu.note}</p>
+                <div key={edu.degree}>
+                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--ink-soft)]">{edu.date}</p>
+                  <h4 className="mt-2 font-semibold text-[var(--ink)]">{edu.degree}</h4>
+                  <p className="mt-1 text-sm text-[var(--accent-bright)]">{edu.school}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--ink-muted)]">{edu.note}</p>
                 </div>
               ))}
             </div>

@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ExternalLink, FolderKanban, Github, LayoutTemplate } from "lucide-react";
-import { useMemo, useState } from "react";
+import { ArrowUpRight, ExternalLink, FolderKanban, Github, LayoutTemplate } from "lucide-react";
+import { useMemo, useState, type ReactNode } from "react";
 import {
   projectEmbedSrc,
   projectPreviewLink,
@@ -22,12 +22,13 @@ const WORK_VIEWS = [
   {
     id: "development",
     label: "Development",
-    description: "Capstone mobile apps, enterprise dashboards, and live demos—each shown in the device frame it was designed for.",
+    description:
+      "Shipped products and client builds—each row pairs a live preview with the problem, outcome, and stack.",
   },
   {
     id: "ui-design",
     label: "UI Design",
-    description: "Figma files and prototypes—scroll, zoom, and explore the UI work behind each build.",
+    description: "Figma systems and screens that informed the builds below—design intent, not decoration.",
   },
 ] as const;
 
@@ -37,16 +38,273 @@ const filters = ["All", ...Array.from(new Set(projects.map((project) => project.
 
 function previewLabel(project: Project) {
   if (project.prototype) return "Prototype";
-  if (project.live) return "Live";
+  if (project.live) return "View live";
   if (project.figma) return "Figma";
-  return null;
+  return "Preview";
 }
 
 function uiPreviewLabel(design: UiDesign) {
   if (design.prototype) return "Prototype";
   if (design.figmaLink) return "Figma file";
   if (design.figma) return "Figma";
-  return null;
+  return "Preview";
+}
+
+type VisualPanelProps = {
+  accent: string;
+  title: string;
+  device: Project["device"];
+  embedSrc?: string;
+  indexLabel: string;
+  categoryLabel: string;
+  onOpen: () => void;
+  reversed: boolean;
+};
+
+function VisualPanel({
+  accent,
+  title,
+  device,
+  embedSrc,
+  indexLabel,
+  categoryLabel,
+  onOpen,
+  reversed,
+}: VisualPanelProps) {
+  return (
+    <div className={`relative ${reversed ? "lg:order-2" : "lg:order-1"}`}>
+      <div
+        className={`pointer-events-none absolute -z-10 rounded-3xl bg-[var(--surface-warm)] ${
+          reversed ? "-left-6 top-8 h-[88%] w-[92%]" : "-right-6 top-6 h-[90%] w-[94%]"
+        }`}
+        aria-hidden
+      />
+
+      <motion.button
+        type="button"
+        onClick={onOpen}
+        whileHover={{ y: -4 }}
+        transition={{ type: "spring", stiffness: 320, damping: 26 }}
+        className="group relative w-full overflow-hidden rounded-2xl text-left shadow-[0_24px_60px_-28px_rgba(12,18,34,0.28)]"
+        style={{ background: accent }}
+        aria-label={`Open ${title} preview`}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_15%,rgba(255,255,255,0.5),transparent_52%)]" />
+        <div className="relative max-h-[340px] overflow-hidden md:max-h-[380px]">
+          <ProjectDevicePreview
+            variant={device}
+            accent={accent}
+            title={title}
+            src={embedSrc}
+            compact
+          />
+        </div>
+        <div className="absolute inset-0 flex items-end justify-end bg-linear-to-t from-[var(--ink)]/25 via-transparent to-transparent p-5 opacity-0 transition-opacity group-hover:opacity-100">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[var(--ink)]">
+            Expand preview <ArrowUpRight size={14} />
+          </span>
+        </div>
+      </motion.button>
+
+      <span
+        className={`absolute top-4 z-10 rounded-full bg-[var(--ink)] px-3 py-1 text-[11px] font-semibold tracking-wider text-white ${
+          reversed ? "left-4 lg:-left-3" : "right-4 lg:-right-3"
+        }`}
+      >
+        {indexLabel}
+      </span>
+
+      <span
+        className={`absolute bottom-4 z-10 max-w-[70%] rounded-lg border border-[var(--line)] bg-[var(--surface-elevated)]/95 px-3 py-2 text-[11px] font-medium text-[var(--ink-muted)] backdrop-blur-sm ${
+          reversed ? "right-4 lg:-right-4" : "left-4 lg:-left-4"
+        }`}
+      >
+        {categoryLabel}
+      </span>
+    </div>
+  );
+}
+
+type StoryPanelProps = {
+  eyebrow: string;
+  title: string;
+  problem: string;
+  outcome: string;
+  contribution: string;
+  tags: string[];
+  reversed: boolean;
+  actions: ReactNode;
+};
+
+function StoryPanel({ eyebrow, title, problem, outcome, contribution, tags, reversed, actions }: StoryPanelProps) {
+  return (
+    <div className={`flex flex-col justify-center ${reversed ? "lg:order-1 lg:pr-6" : "lg:order-2 lg:pl-6"}`}>
+      <p className="eyebrow">{eyebrow}</p>
+      <h3 className="font-display mt-4 text-[clamp(1.65rem,3.5vw,2.5rem)] font-bold leading-[1.08] text-[var(--ink)]">
+        {title}
+      </h3>
+
+      <dl className="mt-6 space-y-5">
+        <div>
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-soft)]">What it is</dt>
+          <dd className="mt-2 text-[15px] leading-relaxed text-[var(--ink-muted)]">{problem}</dd>
+        </div>
+        <div>
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-soft)]">Outcome</dt>
+          <dd className="mt-2 text-[15px] leading-relaxed text-[var(--ink)]">{outcome}</dd>
+        </div>
+        <div>
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-soft)]">My role</dt>
+          <dd className="mt-2 text-[15px] leading-relaxed text-[var(--ink-muted)]">{contribution}</dd>
+        </div>
+        <div>
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--ink-soft)]">Stack</dt>
+          <dd className="mt-3 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span key={tag} className="tag-minimal">
+                {tag}
+              </span>
+            ))}
+          </dd>
+        </div>
+      </dl>
+
+      <div className="mt-8 flex flex-wrap gap-3">{actions}</div>
+    </div>
+  );
+}
+
+type ProjectShowcaseProps = {
+  project: Project;
+  index: number;
+  isLast: boolean;
+  onOpen: () => void;
+};
+
+function DevelopmentShowcase({ project, index, isLast, onOpen }: ProjectShowcaseProps) {
+  const reversed = index % 2 === 1;
+  const embedSrc = projectEmbedSrc(project);
+  const previewLink = projectPreviewLink(project);
+  const github = socials.find((s) => s.label === "GitHub")?.href ?? "https://github.com/";
+
+  return (
+    <SectionReveal delay={index * 0.05}>
+      <article className={`relative py-14 md:py-20 ${index % 2 === 0 ? "lg:-mr-4" : "lg:-ml-4"}`}>
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14 xl:gap-16">
+          <VisualPanel
+            accent={project.accent}
+            title={project.title}
+            device={project.device}
+            embedSrc={embedSrc}
+            indexLabel={project.number}
+            categoryLabel={project.category}
+            onOpen={onOpen}
+            reversed={reversed}
+          />
+
+          <StoryPanel
+            eyebrow={project.category}
+            title={project.title}
+            problem={project.description}
+            outcome={project.outcome}
+            contribution={project.contribution}
+            tags={project.tech}
+            reversed={reversed}
+            actions={
+              <>
+                {previewLink ? (
+                  <a href={previewLink} target="_blank" rel="noreferrer" className="btn-primary">
+                    {previewLabel(project)} <ExternalLink className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <button type="button" onClick={onOpen} className="btn-primary">
+                    View project <ArrowUpRight className="h-4 w-4" />
+                  </button>
+                )}
+                <a href={github} target="_blank" rel="noreferrer" className="btn-secondary">
+                  <Github className="h-4 w-4" /> GitHub
+                </a>
+              </>
+            }
+          />
+        </div>
+      </article>
+      {isLast ? null : <div className="divider-editorial my-4" />}
+    </SectionReveal>
+  );
+}
+
+type DesignShowcaseProps = {
+  design: UiDesign;
+  index: number;
+  isLast: boolean;
+  onOpen: () => void;
+};
+
+function UiDesignShowcase({ design, index, isLast, onOpen }: DesignShowcaseProps) {
+  const reversed = index % 2 === 1;
+  const embedSrc = uiDesignEmbedSrc(design);
+  const previewLink = uiDesignPreviewLink(design);
+
+  return (
+    <SectionReveal delay={index * 0.05}>
+      <article className={`relative py-14 md:py-20 ${index % 2 === 0 ? "lg:-mr-4" : "lg:-ml-4"}`}>
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14 xl:gap-16">
+          {embedSrc ? (
+            <VisualPanel
+              accent={design.accent}
+              title={design.title}
+              device={design.device}
+              embedSrc={embedSrc}
+              indexLabel={design.number}
+              categoryLabel="UI Design · Figma"
+              onOpen={onOpen}
+              reversed={reversed}
+            />
+          ) : (
+            <div
+              className={`flex min-h-[280px] flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-[var(--line-strong)] p-8 ${
+                reversed ? "lg:order-2" : "lg:order-1"
+              }`}
+              style={{ background: design.accent }}
+            >
+              <LayoutTemplate className="h-8 w-8 text-[var(--accent-bright)]" />
+              {previewLink ? (
+                <a href={previewLink} target="_blank" rel="noreferrer" className="btn-secondary">
+                  {uiPreviewLabel(design)} <ExternalLink className="h-4 w-4" />
+                </a>
+              ) : null}
+            </div>
+          )}
+
+          <StoryPanel
+            eyebrow="UI Design"
+            title={design.title}
+            problem={design.description}
+            outcome={design.outcome}
+            contribution={design.contribution}
+            tags={design.tags}
+            reversed={reversed}
+            actions={
+              <>
+                {previewLink ? (
+                  <a href={previewLink} target="_blank" rel="noreferrer" className="btn-primary">
+                    Open in Figma <ExternalLink className="h-4 w-4" />
+                  </a>
+                ) : null}
+                {embedSrc ? (
+                  <button type="button" onClick={onOpen} className="btn-secondary">
+                    Explore embed
+                  </button>
+                ) : null}
+              </>
+            }
+          />
+        </div>
+      </article>
+      {isLast ? null : <div className="divider-editorial my-4" />}
+    </SectionReveal>
+  );
 }
 
 export function ProjectsSection() {
@@ -63,18 +321,19 @@ export function ProjectsSection() {
   }, [activeFilter]);
 
   return (
-    <section id="projects" className="scroll-mt-28 px-6 py-24">
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="projects" className="section-projects scroll-mt-28 px-6 py-28 md:py-32">
+      <div className="mx-auto w-full max-w-7xl">
         <SectionHeader
           icon={FolderKanban}
-          label="Projects"
-          title="Shipped work you can evaluate in one sitting"
+          label="Selected work"
+          title="Projects that show how I design and ship"
           description={activeView.description}
           centered
+          large
         />
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-10 flex flex-wrap justify-center gap-2"
@@ -84,13 +343,13 @@ export function ProjectsSection() {
               key={view.id}
               type="button"
               onClick={() => setWorkView(view.id)}
-              className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition ${
+              className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition ${
                 workView === view.id
-                  ? "border-[#2563eb]/50 bg-[#1e3a5f] text-white shadow-md"
-                  : "border-[#bfdbfe] bg-white/90 text-slate-600 hover:border-[#93c5fd]"
+                  ? "bg-[var(--ink)] text-white"
+                  : "border border-[var(--line)] text-[var(--ink-muted)] hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
               }`}
             >
-              {view.id === "ui-design" ? <LayoutTemplate className="h-3.5 w-3.5" /> : null}
+              {view.id === "ui-design" ? <LayoutTemplate className="h-4 w-4" /> : null}
               {view.label}
             </button>
           ))}
@@ -99,8 +358,8 @@ export function ProjectsSection() {
         {workView === "development" ? (
           <>
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mt-6 flex flex-wrap justify-center gap-2"
             >
@@ -109,10 +368,10 @@ export function ProjectsSection() {
                   key={filter}
                   type="button"
                   onClick={() => setActiveFilter(filter)}
-                  className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] transition ${
+                  className={`rounded-full px-4 py-2 text-xs font-medium transition ${
                     activeFilter === filter
-                      ? "border-[#2563eb]/50 bg-[#2563eb] text-white shadow-md"
-                      : "border-[#bfdbfe] bg-white/90 text-slate-600 hover:border-[#93c5fd]"
+                      ? "bg-[var(--accent-bright)] text-white"
+                      : "text-[var(--ink-soft)] hover:text-[var(--ink)]"
                   }`}
                 >
                   {filter}
@@ -120,197 +379,29 @@ export function ProjectsSection() {
               ))}
             </motion.div>
 
-            <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <div className="mt-10">
               {filtered.map((project, index) => (
-                <SectionReveal key={project.id} delay={index * 0.05}>
-                  <motion.article
-                    whileHover={{ y: -8 }}
-                    transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                    className="glass-card group relative overflow-hidden"
-                  >
-                    <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#93c5fd]/35 opacity-70 blur-3xl transition group-hover:opacity-100" />
-
-                    <div
-                      className="relative border-b border-[#bfdbfe]/60"
-                      style={{ background: project.accent }}
-                    >
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.55),transparent_50%)]" />
-                      <div className="relative">
-                        <ProjectDevicePreview
-                          variant={project.device}
-                          accent={project.accent}
-                          title={project.title}
-                        />
-                        <div className="absolute left-4 top-4 z-20 flex items-start justify-between gap-2 sm:right-4">
-                          <span className="rounded-full bg-[#0f172a]/80 px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">
-                            {project.number}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => setActiveProject(project)}
-                            className="rounded-full border border-white/50 bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#0f172a] shadow-sm transition hover:bg-white"
-                          >
-                            Open preview
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-4 p-5">
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#2563eb]">
-                          {project.category}
-                          <span className="mx-2 text-slate-300">·</span>
-                          <span className="text-slate-500">
-                            {project.device === "mobile"
-                              ? "Mobile frame"
-                              : project.device === "desktop"
-                                ? "Desktop frame"
-                                : "Desktop + mobile"}
-                          </span>
-                        </p>
-                        <h3 className="font-display mt-2 text-xl font-bold text-[#0f172a]">{project.title}</h3>
-                        <p className="mt-2 text-sm font-light text-slate-600">{project.description}</p>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tech.map((stack) => (
-                          <span
-                            key={stack}
-                            className="rounded-full border border-[#bfdbfe] bg-[#f0f7ff] px-3 py-1 text-xs font-medium text-slate-700"
-                          >
-                            {stack}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <a
-                          href={socials.find((s) => s.label === "GitHub")?.href ?? "https://github.com/"}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-white px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#2563eb]"
-                        >
-                          <Github className="h-3.5 w-3.5" /> GitHub
-                        </a>
-                        {projectPreviewLink(project) ? (
-                          <a
-                            href={projectPreviewLink(project)}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-white px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#2563eb]"
-                          >
-                            <ExternalLink className="h-3.5 w-3.5" /> {previewLabel(project)}
-                          </a>
-                        ) : null}
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject(project)}
-                          className="ml-auto text-xs font-bold uppercase tracking-[0.16em] text-[#1e40af] hover:text-[#2563eb]"
-                        >
-                          Details
-                        </button>
-                      </div>
-                    </div>
-                  </motion.article>
-                </SectionReveal>
+                <DevelopmentShowcase
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  isLast={index === filtered.length - 1}
+                  onOpen={() => setActiveProject(project)}
+                />
               ))}
             </div>
           </>
         ) : (
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            {UI_DESIGNS.map((design, index) => {
-              const embedSrc = uiDesignEmbedSrc(design);
-              const previewLink = uiDesignPreviewLink(design);
-
-              return (
-                <SectionReveal key={design.id} delay={index * 0.05}>
-                  <motion.article
-                    whileHover={{ y: -6 }}
-                    transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                    className="glass-card group overflow-hidden"
-                  >
-                    <div
-                      className="relative border-b border-[#bfdbfe]/60"
-                      style={{ background: design.accent }}
-                    >
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.55),transparent_50%)]" />
-                      <div className="relative px-4 pt-4">
-                        <span className="inline-flex rounded-full bg-[#0f172a]/80 px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">
-                          {design.number}
-                        </span>
-                      </div>
-                      <div className="relative">
-                        {embedSrc ? (
-                          <ProjectDevicePreview
-                            variant={design.device}
-                            accent={design.accent}
-                            title={design.title}
-                            src={embedSrc}
-                            interactive
-                          />
-                        ) : (
-                          <div className="flex min-h-[280px] flex-col items-center justify-center gap-3 px-6 py-10 text-center">
-                            <LayoutTemplate className="h-8 w-8 text-[#2563eb]/70" />
-                            <p className="max-w-sm text-sm text-slate-600">
-                              Paste your Figma embed URL into <code className="text-[#1e40af]">figma</code> in{" "}
-                              <code className="text-[#1e40af]">UI_DESIGNS</code> to preview this design here.
-                            </p>
-                            {previewLink ? (
-                              <a
-                                href={previewLink}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-white px-4 py-2 text-xs font-semibold text-[#2563eb]"
-                              >
-                                <ExternalLink className="h-3.5 w-3.5" /> {uiPreviewLabel(design)}
-                              </a>
-                            ) : null}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="space-y-4 p-5">
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#2563eb]">UI Design</p>
-                        <h3 className="font-display mt-2 text-xl font-bold text-[#0f172a]">{design.title}</h3>
-                        <p className="mt-2 text-sm font-light text-slate-600">{design.description}</p>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {design.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-[#bfdbfe] bg-[#f0f7ff] px-3 py-1 text-xs font-medium text-slate-700"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        {previewLink ? (
-                          <a
-                            href={previewLink}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full border border-[#bfdbfe] bg-white px-4 py-2 text-xs font-semibold text-slate-600 hover:text-[#2563eb]"
-                          >
-                            <ExternalLink className="h-3.5 w-3.5" /> {uiPreviewLabel(design)}
-                          </a>
-                        ) : null}
-                        {embedSrc ? (
-                          <button
-                            type="button"
-                            onClick={() => setActiveDesign(design)}
-                            className="ml-auto text-xs font-bold uppercase tracking-[0.16em] text-[#1e40af] hover:text-[#2563eb]"
-                          >
-                            Full preview
-                          </button>
-                        ) : null}
-                      </div>
-                    </div>
-                  </motion.article>
-                </SectionReveal>
-              );
-            })}
+          <div className="mt-12">
+            {UI_DESIGNS.map((design, index) => (
+              <UiDesignShowcase
+                key={design.id}
+                design={design}
+                index={index}
+                isLast={index === UI_DESIGNS.length - 1}
+                onOpen={() => setActiveDesign(design)}
+              />
+            ))}
           </div>
         )}
       </div>
@@ -318,82 +409,66 @@ export function ProjectsSection() {
       <AnimatePresence>
         {activeProject ? (
           <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-[#0f172a]/50 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-[var(--ink)]/60 p-4 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveProject(null)}
           >
             <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              initial={{ scale: 0.96, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              exit={{ scale: 0.98, opacity: 0 }}
               transition={{ type: "spring", stiffness: 320, damping: 28 }}
               onClick={(event) => event.stopPropagation()}
-              className="glass-card max-h-[92vh] w-full max-w-4xl overflow-y-auto p-6 md:p-8"
+              className="max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface-elevated)] p-6 md:p-8"
             >
               <p className="eyebrow">{activeProject.category}</p>
-              <h3 className="font-display mt-2 text-2xl font-bold text-[#0f172a]">{activeProject.title}</h3>
-              <p className="mt-3 text-sm font-light leading-relaxed text-slate-600">{activeProject.details}</p>
+              <h3 className="font-display mt-2 text-2xl font-bold text-[var(--ink)]">{activeProject.title}</h3>
+              <dl className="mt-4 space-y-3">
+                <div>
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-soft)]">Outcome</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-[var(--ink)]">{activeProject.outcome}</dd>
+                </div>
+                <div>
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-soft)]">My role</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-[var(--ink-muted)]">{activeProject.contribution}</dd>
+                </div>
+              </dl>
               <div className="mt-4 flex flex-wrap gap-2">
                 {activeProject.tech.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-[#bfdbfe] bg-[#f0f7ff] px-3 py-1 text-xs font-medium text-slate-700"
-                  >
+                  <span key={item} className="tag-minimal">
                     {item}
                   </span>
                 ))}
               </div>
-
-              <div
-                className="relative mt-6 overflow-hidden rounded-2xl border border-[#bfdbfe]"
-                style={{ background: activeProject.accent }}
-              >
+              <div className="relative mt-6 max-h-[50vh] overflow-hidden rounded-xl" style={{ background: activeProject.accent }}>
                 <ProjectDevicePreview
                   variant={activeProject.device}
                   accent={activeProject.accent}
                   title={activeProject.title}
                   src={projectEmbedSrc(activeProject)}
                   interactive={!!projectEmbedSrc(activeProject)}
-                  className={activeProject.device === "dual" ? "min-h-[320px]" : ""}
                 />
                 {activeProject.prototype && !projectEmbedSrc(activeProject) ? (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0f172a]/5 p-8">
-                    <p className="max-w-sm text-center text-sm text-slate-600">
-                      Interactive Figma prototype — opens in a new tab for the full walkthrough.
-                    </p>
-                    <a
-                      href={activeProject.prototype}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-primary inline-flex gap-2"
-                    >
+                  <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <a href={activeProject.prototype} target="_blank" rel="noreferrer" className="btn-primary">
                       <ExternalLink className="h-4 w-4" /> Open Figma prototype
                     </a>
                   </div>
                 ) : null}
               </div>
-
               {projectPreviewLink(activeProject) ? (
                 <a
                   href={projectPreviewLink(activeProject)}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb] hover:underline"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-bright)] hover:underline"
                 >
-                  <ExternalLink className="h-4 w-4" />
-                  {activeProject.prototype
-                    ? "Open Figma prototype in new tab"
-                    : "Open full preview in new tab"}
+                  <ExternalLink className="h-4 w-4" /> Open full preview
                 </a>
               ) : null}
-
-              <button
-                type="button"
-                onClick={() => setActiveProject(null)}
-                className="mt-6 rounded-full border border-[#93c5fd] px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-600 hover:bg-[#dbeafe]"
-              >
+              <button type="button" onClick={() => setActiveProject(null)} className="mt-6 btn-secondary">
                 Close
               </button>
             </motion.div>
@@ -404,40 +479,33 @@ export function ProjectsSection() {
       <AnimatePresence>
         {activeDesign ? (
           <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-[#0f172a]/50 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-[var(--ink)]/60 p-4 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveDesign(null)}
           >
             <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              initial={{ scale: 0.96, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              exit={{ scale: 0.98, opacity: 0 }}
               transition={{ type: "spring", stiffness: 320, damping: 28 }}
               onClick={(event) => event.stopPropagation()}
-              className="glass-card max-h-[92vh] w-full max-w-5xl overflow-y-auto p-6 md:p-8"
+              className="max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface-elevated)] p-6 md:p-8"
             >
               <p className="eyebrow">UI Design</p>
-              <h3 className="font-display mt-2 text-2xl font-bold text-[#0f172a]">{activeDesign.title}</h3>
-              {activeDesign.details ? (
-                <p className="mt-3 text-sm font-light leading-relaxed text-slate-600">{activeDesign.details}</p>
-              ) : null}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {activeDesign.tags.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-[#bfdbfe] bg-[#f0f7ff] px-3 py-1 text-xs font-medium text-slate-700"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <div
-                className="relative mt-6 overflow-hidden rounded-2xl border border-[#bfdbfe]"
-                style={{ background: activeDesign.accent }}
-              >
+              <h3 className="font-display mt-2 text-2xl font-bold text-[var(--ink)]">{activeDesign.title}</h3>
+              <dl className="mt-4 space-y-3">
+                <div>
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-soft)]">Outcome</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-[var(--ink)]">{activeDesign.outcome}</dd>
+                </div>
+                <div>
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ink-soft)]">My role</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-[var(--ink-muted)]">{activeDesign.contribution}</dd>
+                </div>
+              </dl>
+              <div className="relative mt-6 max-h-[50vh] overflow-hidden rounded-xl" style={{ background: activeDesign.accent }}>
                 <ProjectDevicePreview
                   variant={activeDesign.device}
                   accent={activeDesign.accent}
@@ -446,24 +514,17 @@ export function ProjectsSection() {
                   interactive={!!uiDesignEmbedSrc(activeDesign)}
                 />
               </div>
-
               {uiDesignPreviewLink(activeDesign) ? (
                 <a
                   href={uiDesignPreviewLink(activeDesign)}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb] hover:underline"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent-bright)] hover:underline"
                 >
-                  <ExternalLink className="h-4 w-4" />
-                  Open in Figma
+                  <ExternalLink className="h-4 w-4" /> Open in Figma
                 </a>
               ) : null}
-
-              <button
-                type="button"
-                onClick={() => setActiveDesign(null)}
-                className="mt-6 rounded-full border border-[#93c5fd] px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-600 hover:bg-[#dbeafe]"
-              >
+              <button type="button" onClick={() => setActiveDesign(null)} className="mt-6 btn-secondary">
                 Close
               </button>
             </motion.div>

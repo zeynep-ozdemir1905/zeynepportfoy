@@ -7,31 +7,35 @@ import { SectionReveal } from "@/app/components/ui/section-reveal";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="scroll-mt-28 px-6 py-24">
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="experience" className="section-alt scroll-mt-28 px-6 py-28 md:py-32">
+      <div className="mx-auto w-full max-w-7xl">
         <SectionHeader
           icon={Briefcase}
           label="Experience"
           title="Roles where I owned UI and delivery"
-          description="Enterprise, co-op, and community work—each with measurable outcomes for users and teams."
+          description="Contract, co-op, and internship work—each with clear outcomes for users, clients, and teams."
+          large
         />
-        <div className="mt-12 grid gap-5">
+        <div className="mt-16 space-y-0">
           {EXPERIENCE.map((item, index) => (
-            <SectionReveal key={`${item.role}-${index}`} delay={index * 0.06}>
-              <article className="glass-card p-6 transition-shadow hover:shadow-lg hover:shadow-blue-200/20">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{item.date}</p>
-                <h3 className="mt-2 text-xl font-bold text-[#0f172a]">{item.role}</h3>
-                <p className="mt-1 text-sm font-medium text-[#2563eb]">
-                  {item.company} · {item.location}
-                </p>
-                <ul className="mt-4 space-y-2">
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-2 text-sm font-light leading-relaxed text-slate-600">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#60a5fa]" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+            <SectionReveal key={`${item.role}-${index}`} delay={index * 0.05}>
+              <article className="grid gap-6 border-b border-[var(--line)] py-10 md:grid-cols-[220px_1fr] md:gap-12">
+                <div>
+                  <p className="text-sm font-medium text-[var(--ink-soft)]">{item.date}</p>
+                  <p className="mt-2 text-sm text-[var(--accent-bright)]">{item.location}</p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-[var(--ink)]">{item.role}</h3>
+                  <p className="mt-1 text-sm font-medium text-[var(--ink-muted)]">{item.company}</p>
+                  <ul className="mt-5 space-y-3">
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-[var(--ink-muted)]">
+                        <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[var(--accent-warm)]" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             </SectionReveal>
           ))}

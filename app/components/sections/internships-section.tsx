@@ -7,27 +7,29 @@ import { SectionReveal } from "@/app/components/ui/section-reveal";
 
 export function InternshipsSection() {
   return (
-    <section id="internships" className="scroll-mt-28 px-6 py-24">
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="internships" className="scroll-mt-28 border-t border-[var(--line)] px-6 py-28 md:py-32">
+      <div className="mx-auto w-full max-w-7xl">
         <SectionHeader
           icon={Building2}
           label="Internships"
           title="Industry experience under real deadlines"
           description="Hands-on contracts where design met production code."
+          large
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-16 grid gap-10 md:grid-cols-2">
           {INTERNSHIPS.map((item, index) => (
             <SectionReveal key={`${item.org}-${item.title}`} delay={index * 0.06}>
-              <article className="glass-card h-full p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{item.date}</p>
-                <h3 className="mt-2 text-xl font-bold text-[#0f172a]">{item.title}</h3>
-                <p className="mt-1 text-sm font-medium text-[#2563eb]">
+              <article className="h-full border-t border-[var(--line)] pt-8">
+                <p className="text-sm font-medium text-[var(--ink-soft)]">{item.date}</p>
+                <h3 className="mt-3 font-display text-2xl font-bold text-[var(--ink)]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[var(--accent-bright)]">
                   {item.org} · {item.location}
                 </p>
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-6 space-y-3">
                   {item.highlights.map((line) => (
-                    <li key={line} className="text-sm font-light leading-relaxed text-slate-600">
-                      • {line}
+                    <li key={line} className="flex gap-3 text-sm leading-relaxed text-[var(--ink-muted)]">
+                      <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[var(--accent-bright)]" />
+                      {line}
                     </li>
                   ))}
                 </ul>

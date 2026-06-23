@@ -7,10 +7,17 @@ type MagneticButtonProps = {
   children: ReactNode;
   className?: string;
   href?: string;
+  download?: string;
   variant?: "primary" | "secondary" | "ghost";
 };
 
-export function MagneticButton({ children, className = "", href, variant = "ghost" }: MagneticButtonProps) {
+export function MagneticButton({
+  children,
+  className = "",
+  href,
+  download,
+  variant = "ghost",
+}: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement | null>(null);
 
   const handleMove = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -19,7 +26,7 @@ export function MagneticButton({ children, className = "", href, variant = "ghos
     const rect = element.getBoundingClientRect();
     const x = event.clientX - rect.left - rect.width / 2;
     const y = event.clientY - rect.top - rect.height / 2;
-    element.style.transform = `translate(${x * 0.14}px, ${y * 0.14}px)`;
+    element.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px)`;
   };
 
   const reset = () => {
@@ -32,16 +39,17 @@ export function MagneticButton({ children, className = "", href, variant = "ghos
       ? "btn-primary"
       : variant === "secondary"
         ? "btn-secondary"
-        : "inline-flex items-center justify-center rounded-full border border-[#93c5fd]/70 bg-white/90 px-6 py-3 text-sm font-semibold tracking-wide text-[#0f172a] shadow-[0_8px_28px_rgba(30,58,95,0.08)]";
+        : "inline-flex items-center justify-center rounded-full border border-[var(--line-strong)] bg-transparent px-6 py-3 text-sm font-semibold text-[var(--ink)]";
 
   return (
     <motion.a
       ref={ref}
       href={href}
+      download={download}
       onMouseMove={handleMove}
       onMouseLeave={reset}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className={`${base} transition ${className}`}
     >
       {children}

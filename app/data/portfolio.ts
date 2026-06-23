@@ -1,4 +1,6 @@
 export type DevicePreview = "mobile" | "desktop" | "dual";
+//this file contains the data for the projects and the UI designs where you can 
+// embed the Figma files and prototypes or the live site links
 
 export type Project = {
   id: string;
@@ -15,6 +17,11 @@ export type Project = {
   /** Figma prototype — opens in Figma (not embedded) */
   prototype?: string;
   live?: string;
+  /** Impact / result — one tight sentence for recruiters */
+  outcome: string;
+  /** Your role and key deliverables — one tight sentence */
+  contribution: string;
+  /** Extended narrative for modals and resume page */
   details: string;
 };
 
@@ -43,6 +50,11 @@ export type UiDesign = {
   /** Optional link to open the file in Figma */
   figmaLink?: string;
   prototype?: string;
+  /** Impact / result — one tight sentence */
+  outcome: string;
+  /** Design role and deliverables — one tight sentence */
+  contribution: string;
+  /** Extended narrative for modals */
   details?: string;
 };
 
@@ -59,6 +71,8 @@ export const UI_DESIGNS: UiDesign[] = [
     figma:
       "https://embed.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee?node-id=0-1&embed-host=share",
     figmaLink: "https://www.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee",
+    outcome: "Clear mobile hierarchy for industrial field check-in workflows.",
+    contribution: "Wireframes through high-fidelity screens with touch-friendly targets and readable layouts.",
     details: "Capstone mobile UI exploring industrial check-in workflows with clear hierarchy and touch targets.",
   },
   {
@@ -72,6 +86,8 @@ export const UI_DESIGNS: UiDesign[] = [
     figma:
       "https://embed.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep?node-id=0-1&embed-host=share",
     figmaLink: "https://www.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep",
+    outcome: "Warm, approachable mobile flows for gift-card onboarding and purchase.",
+    contribution: "Wireframes and polished screens focused on gifting interactions and readable mobile layouts.",
     details: "Wireframes and polished screens focused on gifting interactions and readable mobile layouts.",
   },
   {
@@ -87,6 +103,8 @@ export const UI_DESIGNS: UiDesign[] = [
     figmaLink: "https://www.figma.com/design/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense",
     prototype:
       "https://www.figma.com/proto/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&t=U6d9Nk78Tav6tFYn-1",
+    outcome: "Enterprise dashboard UI with scannable data layout and accessibility-first decisions.",
+    contribution: "Designed component structure, typography, and colour system for industrial monitoring views.",
     details: "Enterprise dashboard concept with data clarity and accessibility-first layout decisions.",
   },
   {
@@ -100,7 +118,39 @@ export const UI_DESIGNS: UiDesign[] = [
     figma:
       "https://embed.figma.com/design/QyqmbgUfTTaXKFIdnxtDdw/Laise-Farjeen?node-id=1-2&embed-host=share",
     figmaLink: "https://www.figma.com/design/QyqmbgUfTTaXKFIdnxtDdw/Laise-Farjeen",
+    outcome: "Cohesive web UI with consistent spacing, typography, and visual hierarchy.",
+    contribution: "High-fidelity screens and component patterns ready for developer handoff.",
     details: "High-fidelity UI screens for Laise with thoughtful spacing, typography, and component structure.",
+  },
+  {
+    id: "panghimas-mo-ui",
+    number: "05",
+    title: "Panghimas Mo",
+    description: "UI design for a Philippine bakery client — shopping flows with warm, appetizing visual language.",
+    tags: ["Web", "UI Design", "Client Work"],
+    accent: "linear-gradient(135deg, #fff7ed 0%, #fdba74 100%)",
+    device: "desktop",
+    figma:
+      "https://embed.figma.com/design/ELG4KPG3AFJcVuWONP9NDT/Panghimas-Mo-Michelle?node-id=0-1&embed-host=share",
+    figmaLink: "https://www.figma.com/design/ELG4KPG3AFJcVuWONP9NDT/Panghimas-Mo-Michelle",
+    outcome: "Appetizing e-commerce UI with clear product browsing and checkout paths.",
+    contribution: "Client-facing retail screens with warm visual language for a Philippine bakery brand.",
+    details: "Client-facing e-commerce UI for a local Philippine bakery with clear product browsing and purchase paths.",
+  },
+  {
+    id: "closet-cove-ui",
+    number: "06",
+    title: "Closet Cove",
+    description: "UI design for a fashion client — clean layouts for browsing and shopping clothes online.",
+    tags: ["Web", "UI Design", "Client Work"],
+    accent: "linear-gradient(135deg, #fdf2f8 0%, #f9a8d4 100%)",
+    device: "desktop",
+    figma:
+      "https://embed.figma.com/design/Z4dfypSodUdRsU8NT7EYDU/Jessica-Closet-Cove?node-id=0-1&embed-host=share",
+    figmaLink: "https://www.figma.com/design/Z4dfypSodUdRsU8NT7EYDU/Jessica-Closet-Cove",
+    outcome: "Structured fashion retail layouts with a cohesive shopping experience.",
+    contribution: "High-fidelity product and browse screens tailored to a client brand brief.",
+    details: "High-fidelity screens for Closet Cove with structured product layouts and a cohesive retail brand feel.",
   },
 ];
 
@@ -132,9 +182,12 @@ export const PROFILE = {
   emailHref: "mailto:barikazeynep2@gmail.com",
   city: "Calgary, AB",
   openToWork: true,
+  credential: "SAIT · Software Development · UI/UX & Frontend",
 };
 
 /** ATS resume PDF served from /public for header download. */
+//resume pdf file is located in the public folder
+//in order to edit the resume, you need to edit the public/Zeynep_Ozdemir_Resume.pdf file
 export const RESUME_PDF = {
   href: "/Zeynep_Ozdemir_Resume.pdf",
   fileName: "Zeynep_Ozdemir_Resume.pdf",
@@ -199,7 +252,7 @@ export const EXPERIENCE = [
     company: "Tech Connect Alberta",
     location: "Calgary, AB · Contract / Summer Internship",
     bullets: [
-      "Sole designer and developer on end-to-end website builds for startup clients—from discovery and research through delivery and handoff.",
+      "Sole designer and developer on end-to-end website builds for startup five clients—from discovery and research through delivery and handoff.",
       "Engineered fully responsive, multi-page websites using HTML, CSS3, JavaScript, and Tailwind CSS with consistent cross-device rendering.",
       "Collaborated with developers and stakeholders to translate business requirements into cohesive UI designs and manage iterative client feedback.",
     ],
@@ -238,6 +291,7 @@ export type Internship = {
 };
 
 export const INTERNSHIPS: Internship[] = [
+  //in order to edit the internships, you need to edit the data/portfolio.ts file
   {
     date: "Jun 2026 - Jul 2026",
     title: "Web Developer & Web Designer",
@@ -340,6 +394,7 @@ export const SKILL_GROUPS = [
 ];
 
 export const projects: Project[] = [
+  //in order to edit the projects, you need to edit the data/portfolio.ts file, embeded codes and live site links stored here
   {
     id: "go-apricot",
     number: "01",
@@ -352,6 +407,9 @@ export const projects: Project[] = [
     device: "mobile",
     figma:
       "https://embed.figma.com/design/90lijAgk5ZeqkDhio7gfR1/Capstone-Employee?node-id=0-1&embed-host=share",
+    outcome: "App Store–ready cross-platform app for industrial workforce check-ins.",
+    contribution:
+      "Led design and development end-to-end—Figma prototypes, user testing, Git workflow, and code reviews.",
     details:
       "Spearheaded end-to-end design and development from concept through App Store-ready build. Designed interactive Figma prototypes, ran user testing, and led Git workflow and code reviews.",
   },
@@ -367,6 +425,9 @@ export const projects: Project[] = [
     device: "desktop",
     prototype:
       "https://www.figma.com/proto/qhs7vi6wQTljzR0POBCpWJ/ds_projectdrillsense?node-id=0-1&t=U6d9Nk78Tav6tFYn-1",
+    outcome: "Deployed responsive brand site with cohesive identity for an international marine client.",
+    contribution:
+      "Sole owner from discovery through deployment—Vite, Tailwind CSS, and AI-assisted content iteration.",
     details:
       "Designed and built a polished, fully responsive product with cohesive visual identity and structured layouts for a premium client-facing brand presence.",
   },
@@ -382,6 +443,8 @@ export const projects: Project[] = [
     device: "mobile",
     figma:
       "https://embed.figma.com/design/93G7mly7oPhtVMvHCH9C5a/Wireframe-Zeynep?node-id=0-1&embed-host=share",
+    outcome: "Polished mobile gifting concept with warm, approachable onboarding and purchase flows.",
+    contribution: "Designed wireframes through high-fidelity Figma prototypes focused on usability and visual clarity.",
     details:
       "Crafted onboarding and user flows that balance warmth, usability, and strong visual communication.",
   },
@@ -396,6 +459,9 @@ export const projects: Project[] = [
     accent: "linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%)",
     device: "desktop",
     live: "https://campus-navigator-seven.vercel.app/",
+    outcome: "Live student guidance platform with intuitive navigation across device sizes.",
+    contribution:
+      "Lead designer and front-end developer—sprint planning, feature scoping, and agile team debugging.",
     details:
       "Engineered a mobile application with intuitive navigation and performance across device sizes. Contributed to sprint planning, feature scoping, and collaborative debugging within an agile team.",
   },
@@ -409,6 +475,8 @@ export const projects: Project[] = [
     accent: "linear-gradient(135deg, #dbeafe 0%, #1e3a5f 35%, #93c5fd 100%)",
     device: "dual",
     live: "https://cprg306-project-volunteeringplatform.vercel.app/",
+    outcome: "Accessible volunteer marketplace connecting users with community opportunities.",
+    contribution: "Lead designer and front-end developer on discovery, application, and progress-tracking flows.",
     details:
       "An accessible, user-friendly experience for discovering opportunities, applying, and tracking volunteer progress.",
   },
@@ -422,6 +490,8 @@ export const projects: Project[] = [
     accent: "linear-gradient(135deg, #dbeafe 0%, #1e3a5f 35%, #93c5fd 100%)",
     device: "desktop",
     live: "https://closetcove.vercel.app/",
+    outcome: "Live e-commerce site for fashion shoppers with accessible browsing and checkout.",
+    contribution: "Client-facing build—UI design, TypeScript front-end development, and production deployment.",
     details:
       "An accessible, user-friendly experience for finding and shopping clothes.",
   },
@@ -435,6 +505,8 @@ export const projects: Project[] = [
     accent: "linear-gradient(135deg, #dbeafe 0%, #1e3a5f 35%, #93c5fd 100%)",
     device: "desktop",
     live: "https://panghimas-mo.vercel.app/",
+    outcome: "Live bakery e-commerce site with local brand presence for a Philippine food client.",
+    contribution: "End-to-end client delivery from UI design through TypeScript front-end and launch.",
     details:
       "An accessible, user-friendly experience for finding and shopping food from local Philippine bakery.",
   },
@@ -448,6 +520,9 @@ export const projects: Project[] = [
     tech: ["UI Design", "Front-End Development", "Hackathon"],
     accent: "linear-gradient(135deg, #ecfdf5 0%, #6ee7b7 100%)",
     device: "desktop",
+    outcome: "Hackathon Community Choice Award for a gamified focus and study-session web app.",
+    contribution:
+      "Designed and built timed focus sessions with virtual garden progression and companion feedback.",
     details:
       "Built a gamified focus app with timed study sessions and distraction control. Completed sessions grow a virtual garden and a companion character reacts to user progress.",
   },

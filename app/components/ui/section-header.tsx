@@ -10,38 +10,38 @@ type SectionHeaderProps = {
   description?: string;
   icon?: LucideIcon;
   centered?: boolean;
+  large?: boolean;
 };
 
-export function SectionHeader({ label, title, description, icon: Icon, centered }: SectionHeaderProps) {
+export function SectionHeader({ label, title, description, icon: Icon, centered, large }: SectionHeaderProps) {
   return (
     <motion.header
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, ease: easeOut }}
-      className={centered ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
+      transition={{ duration: 0.75, ease: easeOut }}
+      className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}
     >
       <div className={`flex items-center gap-3 ${centered ? "justify-center" : ""}`}>
-        {Icon ? (
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#dbeafe]">
-            <Icon size={16} className="text-[#1e40af]" />
-          </div>
-        ) : null}
+        {Icon ? <Icon size={18} className="text-[var(--accent-bright)]" strokeWidth={1.5} /> : null}
         <p className="eyebrow">{label}</p>
       </div>
-      <h2 className="font-display mt-4 text-3xl font-bold tracking-tight text-[#0f172a] md:text-4xl">{title}</h2>
+      <h2
+        className={`font-display mt-5 font-bold tracking-tight text-[var(--ink)] ${
+          large ? "text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05]" : "text-[clamp(1.875rem,4vw,3rem)] leading-[1.1]"
+        }`}
+      >
+        {title}
+      </h2>
       {description ? (
-        <p className={`mt-3 text-sm font-light leading-relaxed text-slate-600 ${centered ? "" : "max-w-xl"}`}>
+        <p
+          className={`mt-5 text-base leading-relaxed text-[var(--ink-muted)] md:text-lg ${
+            centered ? "mx-auto max-w-2xl" : "max-w-2xl"
+          }`}
+        >
           {description}
         </p>
       ) : null}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: easeOut, delay: 0.1 }}
-        className={`mt-6 h-px origin-left bg-linear-to-r from-[#93c5fd] via-[#2563eb] to-transparent ${centered ? "mx-auto max-w-xs origin-center" : ""}`}
-      />
     </motion.header>
   );
 }

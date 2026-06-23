@@ -19,8 +19,8 @@ export function MarqueeStrip() {
 
   return (
     <div
-      className="relative select-none overflow-hidden border-y border-[#93c5fd]/30 py-5"
-      style={{ background: "linear-gradient(90deg, #0f172a, #1e3a5f)" }}
+      className="relative select-none overflow-hidden border-y border-[var(--line)] py-4"
+      style={{ background: "var(--ink)" }}
     >
       <motion.div className="flex whitespace-nowrap" style={{ x }}>
         {row.map((item, i) => (

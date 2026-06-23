@@ -27,7 +27,7 @@ export default function PortfolioPage() {
   }, []);
 
   return (
-    <main className="relative overflow-hidden text-[#0f172a]">
+    <main className="relative overflow-hidden text-[var(--ink)]">
       <LoadingScreen loading={loading} />
       <ScrollProgress />
       <BackgroundEffects />
@@ -36,28 +36,26 @@ export default function PortfolioPage() {
       <MarqueeStrip />
       <AboutSection />
       <InteractiveResumeSection />
-      <MarqueeStrip />
-      <ProjectsSection />
       <SkillsSection />
+      <ProjectsSection />
       <InternshipsSection />
       <ExperienceSection />
       <VolunteerSection />
-      <MarqueeStrip />
       <ContactSection />
-      <footer className="px-6 pb-12 pt-6">
-        <div className="glass-card mx-auto max-w-6xl px-5 py-6">
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+      <footer className="border-t border-[var(--line)] px-6 pb-16 pt-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
             {FOOTER_NAV.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="transition-colors hover:text-[#2563eb]"
+                className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)]"
               >
                 {link.label}
               </a>
             ))}
           </div>
-          <p className="mt-4 text-center text-xs uppercase tracking-[0.28em] text-slate-500">
+          <p className="mt-8 text-center text-sm text-[var(--ink-soft)]">
             Zeynep Ozdemir · Calgary, AB · Open to work
           </p>
         </div>

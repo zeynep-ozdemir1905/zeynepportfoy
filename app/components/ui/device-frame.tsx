@@ -182,6 +182,8 @@ type ProjectDevicePreviewProps = {
   src?: string;
   interactive?: boolean;
   className?: string;
+  /** Smaller frames for magazine-style project rows */
+  compact?: boolean;
 };
 
 export function ProjectDevicePreview({
@@ -191,24 +193,35 @@ export function ProjectDevicePreview({
   src,
   interactive = false,
   className = "",
+  compact = false,
 }: ProjectDevicePreviewProps) {
-  const screen = { accent, title, src, interactive };
+  const screen = { accent, title, src, interactive: compact ? false : interactive };
 
   if (variant === "mobile") {
     return (
-      <div className={`flex min-h-[280px] items-center justify-center py-6 ${className}`}>
-        <MobileFrame {...screen} />
+      <div
+        className={`flex items-center justify-center ${compact ? "py-4" : "min-h-[280px] py-6"} ${className}`}
+      >
+        <MobileFrame {...screen} size={compact ? "md" : "md"} />
       </div>
     );
   }
 
   if (variant === "desktop") {
     return (
-      <div className={`flex min-h-[280px] items-center justify-center px-4 py-6 ${className}`}>
-        <DesktopFrame wide {...screen} />
+      <div
+        className={`flex items-center justify-center px-4 ${compact ? "py-4" : "min-h-[280px] py-6"} ${className}`}
+      >
+        <DesktopFrame wide {...screen} className={compact ? "max-w-full" : ""} />
       </div>
     );
   }
 
-  return <DualFrame {...screen} className={className} />;
+  return (
+    <DualFrame
+      {...screen}
+      className={`${compact ? "!min-h-[240px]" : ""} ${className}`.trim()}
+      interactive={interactive}
+    />
+  );
 }
