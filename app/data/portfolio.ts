@@ -137,21 +137,6 @@ export const UI_DESIGNS: UiDesign[] = [
     contribution: "Client-facing retail screens with warm visual language for a Philippine bakery brand.",
     details: "Client-facing e-commerce UI for a local Philippine bakery with clear product browsing and purchase paths.",
   },
-  {
-    id: "closet-cove-ui",
-    number: "06",
-    title: "Closet Cove",
-    description: "UI design for a fashion client — clean layouts for browsing and shopping clothes online.",
-    tags: ["Web", "UI Design", "Client Work"],
-    accent: "linear-gradient(135deg, #fdf2f8 0%, #f9a8d4 100%)",
-    device: "desktop",
-    figma:
-      "https://embed.figma.com/design/Z4dfypSodUdRsU8NT7EYDU/Jessica-Closet-Cove?node-id=0-1&embed-host=share",
-    figmaLink: "https://www.figma.com/design/Z4dfypSodUdRsU8NT7EYDU/Jessica-Closet-Cove",
-    outcome: "Structured fashion retail layouts with a cohesive shopping experience.",
-    contribution: "High-fidelity product and browse screens tailored to a client brand brief.",
-    details: "High-fidelity screens for Closet Cove with structured product layouts and a cohesive retail brand feel.",
-  },
 ];
 
 export function uiDesignEmbedSrc(design: UiDesign) {
@@ -481,23 +466,8 @@ export const projects: Project[] = [
       "An accessible, user-friendly experience for discovering opportunities, applying, and tracking volunteer progress.",
   },
   {
-    id: "Closetcove",
-    number: "06",
-    title: "Closetcove",
-    category: "Web Application",
-    description: "A platform for clothe lovers to find and shop clothes. Built for a client. Built with HTML, CSS, JavaScript, and Typescript.",
-    tech: ["UI Design", "Lead Designer", "Front End Development"],
-    accent: "linear-gradient(135deg, #dbeafe 0%, #1e3a5f 35%, #93c5fd 100%)",
-    device: "desktop",
-    live: "https://closetcove.vercel.app/",
-    outcome: "Live e-commerce site for fashion shoppers with accessible browsing and checkout.",
-    contribution: "Client-facing build—UI design, TypeScript front-end development, and production deployment.",
-    details:
-      "An accessible, user-friendly experience for finding and shopping clothes.",
-  },
-  {
     id: "Panghimagas Mo",
-    number: "07",
+    number: "06",
     title: "Panghimagas Mo",
     category: "Web Application",
     description: "A web application for Phlippine food lovers to find and shop food. Built for a client. Built with HTML, CSS, JavaScript, and Typescript.",
@@ -512,7 +482,7 @@ export const projects: Project[] = [
   },
   {
     id: "lockin-ai",
-    number: "08",
+    number: "07",
     title: "LockIn AI",
     category: "Web Application",
     description:
